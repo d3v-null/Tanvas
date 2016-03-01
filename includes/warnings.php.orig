@@ -183,8 +183,15 @@ function tanvas_is_user_distributor($user = null){
 // }
 
 function tanvas_indefinite_authority($authority, $authority_type){
+<<<<<<< HEAD
+    if(!$authority){
+        return tanvas_indefinite_article($authority_type);
+    }
+    return tanvas_indefinite_article(sprintf("%s %s", $authority, $authority_type));
+=======
     $indef_article = tanvas_indefinite_article(sprintf("%s %s", $authority, $authority_type));
     return preg_replace("/(a|an) ([\w\s]*)/", "$1 ".tanvas_highlight_warning_keyword("$2"), $indef_article);
+>>>>>>> master
 }
 
 function tanvas_get_tier_warning_message($authority, $authority_type = 'customer'){
