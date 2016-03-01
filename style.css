@@ -1022,3 +1022,8 @@ div.term-description table th
  * 1. Application Kits
  */
 .term-application-kits ul.products a h3 {min-height: 100px;}
+
+/* Add shadow to ubergrid text */
+.uber-grid .uber-grid-cell-wrapper .uber-grid-cell-title{
+	text-shadow: 2px 2px 5px black; 
+}
