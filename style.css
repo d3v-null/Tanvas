@@ -15,7 +15,6 @@
 /* =Theme customization starts here
 -------------------------------------------------------------- */
 
-
 @font-face {
 	font-family: "texgyreadventor";
 	src: url("fonts/texgyreadventor-regular.eot");
@@ -26,57 +25,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
-
-/**
- * DEMO STORE NOTICE MODS
- */
-p.demo_store {
-	padding: 0 !important;
-	font-size: 10px;
-}
-
-/**
- * PRODUCT CATEGORY DISPLAY MODS
- */
-
-/*body.archive.tax-product_cat ul.products {
-	display: table;
-}*/
-
-/*body.archive.tax-product_cat ul.products li.product-category.product {
-	display: table-row;
-	width: 100%;
-}
-
-body.archive.tax-product_cat ul.products li.product-category.product img {
-	display: table-cell;
-	float: left;
-	margin: 10px;
-}
-
-body.archive.tax-product_cat ul.products li.product-category.product div.product-category-description {
-	display: table-cell;
-	float: left;
-	margin: 10px;
-	text-align: left;
-}
-
-@media only screen and (min-width: 768px){
-	body.archive.tax-product_cat ul.products li.product-category.product img{
-		max-width: 22%;
-	}
-	body.archive.tax-product_cat ul.products li.product-category.product div.product-category-description {
-		max-width: 71%;
-	}
-} 
-@media only screen and (max-width: 767px){
-	body.archive.tax-product_cat ul.products li.product-category.product img{
-		max-width: 150px;
-	}
-} 
-*/
-
 
 /* Removes those stupid woocommerce marks */
 li mark.count {
