@@ -540,5 +540,15 @@ add_filter('deprecated_constructor_trigger_error', '__return_false');
 
 remove_filter('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 
+/**
+ * Add timestamp to woocommerce order emails
+ */
+
+function tanvas_print_timestamp() {
+	echo "Timestamp: " . date('r');
+	// echo "<br/>";
+}
+
+add_action('woocommerce_email_footer', 'tanvas_print_timestamp', 9, 2 );
 
 ?>
