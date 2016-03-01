@@ -992,6 +992,7 @@ div.term-description table th
 	z-index: -1;
 }
 
+/* Modify demo store notice to push content below it */
 p.demo_store {
 	display: block;
 	position: relative !important;
