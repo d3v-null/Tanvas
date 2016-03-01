@@ -437,6 +437,21 @@ function register_my_menu() {
 }
 
 /**
+ * Change In Stock / Out of Stock Text
+ */
+
+// Reversed back to original after consideration
+// add_filter( 'woocommerce_get_availability', 'wcs_custom_get_availability', 1, 2);
+// function wcs_custom_get_availability( $availability, $_product ) {
+//     // Change Out of Stock Text
+//     if ( ! $_product->is_in_stock() ) {
+// 		$availability['availability'] = __('Coming Soon', 'woocommerce');
+//     }
+//     return $availability;
+// }
+
+
+/**
  * Woocommerce cart prices notice
  */
 function tanvas_output_cart_price_notice(){
@@ -527,5 +542,15 @@ add_filter('deprecated_constructor_trigger_error', '__return_false');
 
 remove_filter('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 
+/**
+ * Add timestamp to woocommerce order emails
+ */
+
+function tanvas_print_timestamp() {
+	echo "Timestamp: " . date('r');
+	// echo "<br/>";
+}
+
+add_action('woocommerce_email_footer', 'tanvas_print_timestamp', 9, 2 );
 
 ?>
