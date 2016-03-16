@@ -51,11 +51,13 @@ $page_template = woo_get_page_template();
 					}
 					if( $left_active){
 						echo "<div class='$left_class' id='tanvas-home-doorway-buttons'  role='complementary'>";
-							echo "<div class='row' id='tanvas-home-doorway-button-wrapper'>";
-								echo '<ul id="doorway-items" class="small-block-grid-2 medium-block-grid-2 large-block-grid-3">';
-									dynamic_sidebar('tanvas_home_doorway');
-								echo '</ul>';	
-							echo "</div> <!-- end tanvas-home-doorway-button-wrapper -->";
+							// $your_grid_id = "18039";
+							// echo ubergrid($your_grid_id);
+							// echo "<div class='row' id='tanvas-home-doorway-button-wrapper'>";
+							// 	echo '<ul id="doorway-items" class="small-block-grid-2 medium-block-grid-2 large-block-grid-3">';
+							dynamic_sidebar('tanvas_home_doorway');
+							// 	echo '</ul>';	
+							// echo "</div> <!-- end tanvas-home-doorway-button-wrapper -->";
 						echo '</div> <!-- end tanvas-home-doorway-buttons -->';
 					}
 					if( $right_active){
