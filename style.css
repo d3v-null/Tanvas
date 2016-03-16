@@ -31,41 +31,9 @@ li mark.count {
 	display: none;
 }
 
-/* Makes category name appear inside image - woocommerce products*/
-body.home li.product-category.product a {
-	position: relative;
-	width: 100%;
-}
-
-body.home li.product-category.product a h3 {
-	position: absolute;
-	Bottom: 0;
-	left: 0;
-	width: 100%;
-	box-sizing: border-box;
-	max-width: 100%;
-	max-height: 100%;
-	color: #d2ab67;
-	text-transform: uppercase;
-	font-size: 16px;
-	font-family: Helvetica;
-	background: rgb(0,0,0);
-/* fallback color */
-	background: rgba(0,0,0,0.7);
-	margin-bottom: 0;
-	padding: 10px;
-/* trial */
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
 /* product titles */
 li.product a h3 {
-	font-weight: normal;
-}
-
-li.product-category.product a h3 {
-	color: black!important;
+	font-weight: bold;
 }
 
 /* position header logo correctly in mobile view */
@@ -153,51 +121,6 @@ div#recent-posts-section {
 	border-width: 2px;
 }
 
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget{
-	background-color: transparent;
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a{
-	position: relative;
-	display: block;
-	margin: 0px 10px 20px 10px;
-	/*border-style:solid;
-    border-width: medium;
-    border-color: #d1aa67;	*/
-	max-height: 300px;
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	width: 100%;
-	max-width: 100%;
-	height: auto;
-	box-sizing: border-box;
-	/*max-height: 0%;	*/
-	color: #d2ab67;
-	text-transform: uppercase;
-	font-size: 16px;
-	font-family: Helvetica;
-	background: rgb(0,0,0);
-/* fallback color */
-	background: rgba(0,0,0,0.7);
-	margin-bottom: 0;
-	padding: 10px;
-/* trial */
-	overflow: hidden;
-	text-overflow: ellipsis;	
-	text-align: center;
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway a img {
-	/*display:block;*/
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
-	color: black;
-}
 /* custom homepage widgets */
 
 /* custom widget styles */
@@ -206,78 +129,12 @@ div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget,
 aside#sidebar div.widget,
 div.widget-area#tanvas_home_right div.widget {
 	background-color: white;
-/*	border-color: #d1aa67;
-	border-style: solid;
-	border-width: medium;*/
 } 
 
 div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
 div.widget-area#tanvas_home_right div.widget h2,
 aside#sidebar div.widget h3  {
 	color: #d1aa67;
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons {
-	background: transparent;
-	background-color: transparent;
-	background-image: none;
-	color: transparent;	
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget {
-	background: transparent;
-	background-color: transparent;
-	background-image: none;
-	color: transparent;	
-	padding: 0px;
-	margin: 0px;
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a{
-	/*background-color: white;*/
-	position: relative;
-	display: block;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
-	/*border-style:solid;
-    border-width: medium;
-    border-color: #d1aa67;	*/
-    max-width: 300px;
-	max-height: 300px;
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	width: 100%;
-	max-width: 100%;
-	height: auto;
-	box-sizing: border-box;
-	/*max-height: 0%;	*/
-	color: #d2ab67;
-	text-transform: uppercase;
-	font-size: 16px;
-	font-family: Helvetica;
-	background: rgb(0,0,0);
-/* fallback color */
-	background: rgba(0,0,0,0.7);
-	margin-bottom: 0;
-	padding: 10px;
-/* trial */
-	overflow: hidden;
-	text-overflow: ellipsis;	
-	text-align: center;
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway a img {
-	display:block;
-	width: auto;
-	height: auto;
-	max-width: 300px;
-	max-height: 300px;
 }
 
 div.doorway-container {
@@ -972,8 +829,11 @@ div.term-description table th
 /*.term-application-kits ul.products a h3 {min-height: 100px;}*/
 
 /* Add shadow to ubergrid text */
-.uber-grid .uber-grid-cell-wrapper .uber-grid-cell-title{
+
+body.home .uber-grid .uber-grid-cell-wrapper .uber-grid-cell-title{
 	text-shadow: 2px 2px 5px black; 
+	text-transform: uppercase;
+	/*font-family: Arial !important;*/
 }
 
 .uber-grid .uber-grid-cell-wrapper .uber-grid-cell-content .uber-grid-cell-title-wrapper .uber-grid-cell-title::before{
@@ -997,3 +857,96 @@ p.demo_store {
 	display: block;
 	position: relative !important;
 }
+
+
+/**
+ * Shop product category css
+ */
+ .tanvas_product_cat_container{
+     position: relative;
+     display: block;
+     margin-bottom: .75em;
+     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+     box-sizing: border-box; 
+     top:0;
+     left:0;
+     right: 0;
+ }
+
+ ul.products li.product a .tanvas_product_cat_container img{
+ 	/* remove .75em margin from image */
+ 	margin-bottom: 0;
+ 	/* remove width: auto */
+    width: 100%;
+    height: auto;
+ }
+ .tanvas_dimmed{
+     position: relative;
+ }
+ .tanvas_dimmed::after {
+     content: " ";
+     z-index: 10;
+     display: block;
+     position: absolute;
+     height: 100%;
+     top: 0;
+     left: 0;
+     right: 0;
+     background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
+     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+     background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
+     background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
+     background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* IE10+ */
+     background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
+     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */;
+ }
+ .tanvas_product_cat_container img{
+     display: block;
+     position: relative;
+     vertical-align: middle;
+     margin-bottom: 0;
+ }
+ .tanvas_product_cat_image {
+     display: inline-block;
+ }
+ .tanvas_anteposed_gold {
+     position: relative;
+ }
+ .tanvas_anteposed_gold::before {
+     content: " ";
+     /*z-index: ;*/
+     display: block;
+     position: absolute;
+     height: 100%;
+     top: 0;
+     left: 0;
+     right: 0;
+     background-image: url("http://technotea.com.au/wp-content/themes/tanvas/img/gold-background.jpg");
+     background-size: cover;
+ }
+ .tanvas_product_cat_container h3{
+     position: absolute;
+     vertical-align: center;
+     top: 50%;
+     left: 0;
+     width: 100%;
+     color: white;
+     text-transform: uppercase;
+     text-align: center;
+     -webkit-transform: translateY(-50%);
+     -ms-transform: translateY(-50%);
+     transform: translateY(-50%);
+     padding-left: 4%;
+     padding-right: 4%;
+     margin-bottom: 0px;
+     margin-top: 0px;
+     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+     box-sizing: border-box; 
+     z-index: 20;
+     text-shadow: 2px 2px 5px black; 
+ 	overflow: hidden;
+	text-overflow: ellipsis;
+ }
+

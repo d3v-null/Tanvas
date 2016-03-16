@@ -257,7 +257,7 @@ ul#doorway-items {
 	margin: 0;
 }
 
-.doorway-container {
+/*.doorway-container {
 	position: relative;
 	border: solid 2px #020016;
 	max-width: 300px;
@@ -266,7 +266,7 @@ ul#doorway-items {
 	-webkit-box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.39);
 	-moz-box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.39);
 	box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.39);
-}
+}*/
 
 .doorway-title-section {
 	display: block;

@@ -33,8 +33,8 @@ $woocommerce_loop['loop'] ++;
 
 	<a href="<?php echo get_term_link( $category->slug, 'product_cat' ); ?>">
 
-		<div id="productcategory">
-		<div class="product-category-img-section">
+		<div class="tanvas_product_cat_container">
+		<div class="tanvas_product_cat_image tanvas_anteposed_gold tanvas_dimmed">
 		<?php
 			/**
 			 * woocommerce_before_subcategory_title hook
@@ -44,8 +44,8 @@ $woocommerce_loop['loop'] ++;
 			do_action( 'woocommerce_before_subcategory_title', $category );
 		?>
 		</div>
-		<div class="product-category-gold-img-section"></div>
-		</div>
+<!-- 		<div class="product-category-gold-img-section"></div>
+		</div> -->
 
 		<h3>
 			<?php
@@ -55,6 +55,7 @@ $woocommerce_loop['loop'] ++;
 					echo apply_filters( 'woocommerce_subcategory_count_html', ' <mark class="count">(' . $category->count . ')</mark>', $category );
 			?>
 		</h3>
+		</div>
 
 		<?php
 			/**
