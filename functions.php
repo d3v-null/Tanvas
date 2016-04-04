@@ -113,8 +113,8 @@ function tanvas_widgets_init() {
 	register_sidebar( array(
 		'name' 			=> 'Home Doorway Buttons',
 		'id' 			=> 'tanvas_home_doorway',
-		'before_widget'	=> '<li><div class="doorway-container">',
-		'after_widget'	=> '</div></li>',
+		'before_widget'	=> '<div class="doorway-container">',
+		'after_widget'	=> '</div>',
 		'before_title'	=> '<h5 class="doorway-title">',
 		'after_title'	=> '</h5>'
 	));
