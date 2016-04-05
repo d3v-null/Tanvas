@@ -883,7 +883,7 @@ p.demo_store {
 
  ul.products li.product a .tanvas_product_cat_container img{
  	/* remove .75em margin from image */
- 	margin-bottom: 0;
+ 	margin-bottom: 0 !important;
  	/* remove width: auto */
     width: 100%;
     height: auto;
@@ -912,7 +912,7 @@ p.demo_store {
      display: block;
      position: relative;
      vertical-align: middle;
-     margin-bottom: 0;
+     margin-bottom: 0 !important;
  }
  .tanvas_product_cat_image {
      display: inline-block;
