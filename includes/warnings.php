@@ -159,12 +159,13 @@ function tanvas_is_user_tier($user = null, $tier){
         $user = wp_get_current_user();
     }
 
-    if (class_exists('Lasercommerce_Plugin')) {
-        global $Lasercommerce_Plugin;
-        if (isset($Lasercommerce_Plugin)) {
-            $visible_tiers = $Lasercommerce_Plugin->tree->getVisibleTiers($user);
-            return tanvas_authorities_contain($visible_tiers, $tier);
-        }
+    if (class_exists('Lasercommerce_Tier_Tree')) {
+        $visible_tiers = Lasercommerce_Tier_Tree::instance()->getVisibleTiers($user);
+        return tanvas_authorities_contain($visible_tiers, $tier);
+        // if (isset($Lasercommerce_Plugin)) {
+        //     $visible_tiers = $Lasercommerce_Plugin->tree->getVisibleTiers($user);
+        //     return tanvas_authorities_contain($visible_tiers, $tier);
+        // }
     }
     return false;
 }
@@ -583,13 +584,15 @@ function tanvas_get_user_tiers($user = null) {
     }
     
     $user_id = $user->ID;
-    
-    if (class_exists('Lasercommerce_Plugin')) {
-        global $Lasercommerce_Plugin;
-        if (isset($Lasercommerce_Plugin)) {
-            $tiers = $Lasercommerce_Plugin->tree->getUserTiers($user_id);
-        }
-    } 
+    if (class_exists('Lasercommerce_Tier_Tree')) {
+        $tiers = Lasercommerce_Tier_Tree::instance()->getUserTiers($user_id);
+    }
+    // if (class_exists('Lasercommerce_Plugin')) {
+    //     global $Lasercommerce_Plugin;
+    //     if (isset($Lasercommerce_Plugin)) {
+    //         $tiers = $Lasercommerce_Plugin->tree->getUserTiers($user_id);
+    //     }
+    // } 
     else {
         if (TANVAS_DEBUG) error_log($_procedure . "LC plugin class DNE");
     }
@@ -600,12 +603,16 @@ function tanvas_get_user_tiers($user = null) {
 
 function tanvas_get_user_tier_ids($user = null){
     $tiers = tanvas_get_user_tiers($user);
-    if ( class_exists('Lasercommerce_Plugin') ){
-        global $Lasercommerce_Plugin;
-        if(isset($Lasercommerce_Plugin)){
-            return $Lasercommerce_Plugin->tree->getTierIds($tiers);
-        }
+    if (class_exists('Lasercommerce_Tier_Tree')) {
+        return Lasercommerce_Tier_Tree::instance()->getTierIds($tiers);
     }
+
+    // if ( class_exists('Lasercommerce_Plugin') ){
+    //     global $Lasercommerce_Plugin;
+    //     if(isset($Lasercommerce_Plugin)){
+    //         return $Lasercommerce_Plugin->tree->getTierIds($tiers);
+    //     }
+    // }
     return array();
 }
 
@@ -619,12 +626,15 @@ function tanvas_get_user_visible_tiers($user = null){
     
     $user_id = $user->ID;
     
-    if (class_exists('Lasercommerce_Plugin')) {
-        global $Lasercommerce_Plugin;
-        if (isset($Lasercommerce_Plugin)) {
-            $tiers = $Lasercommerce_Plugin->tree->getVisibleTiers($user_id);
-        }
-    } 
+    if (class_exists('Lasercommerce_Tier_Tree')) {
+        $tiers = Lasercommerce_Tier_Tree::instance()->getVisibleTiers($user_id);
+    }
+    // if (class_exists('Lasercommerce_Plugin')) {
+    //     global $Lasercommerce_Plugin;
+    //     if (isset($Lasercommerce_Plugin)) {
+    //         $tiers = $Lasercommerce_Plugin->tree->getVisibleTiers($user_id);
+    //     }
+    // } 
     else {
         if (TANVAS_DEBUG) error_log($_procedure . "LC plugin class DNE");
     }
@@ -635,12 +645,15 @@ function tanvas_get_user_visible_tiers($user = null){
 
 function tanvas_get_user_visible_tier_ids($user = null){
     $tiers = tanvas_get_user_visible_tiers($user);
-    if ( class_exists('Lasercommerce_Plugin') ){
-        global $Lasercommerce_Plugin;
-        if(isset($Lasercommerce_Plugin)){
-            return $Lasercommerce_Plugin->tree->getTierIds($tiers);
-        }
-    }    
+    if (class_exists('Lasercommerce_Tier_Tree')) {
+        return Lasercommerce_Tier_Tree::instance()->getTierIds($tiers);
+    }
+    // if ( class_exists('Lasercommerce_Plugin') ){
+    //     global $Lasercommerce_Plugin;
+    //     if(isset($Lasercommerce_Plugin)){
+    //         return $Lasercommerce_Plugin->tree->getTierIds($tiers);
+    //     }
+    // }    
     return array();
 }
 
@@ -706,9 +719,8 @@ function tanvas_term_restricted($term, $user = null){
     $user_id = $user->ID;
     $term_id = $term->term_id; 
 
-    if(class_exists('Lasercommerce_Plugin')){
-        global $Lasercommerce_Plugin;
-        return !$Lasercommerce_Plugin->visibility->user_can_read_term($user_id, $term_id);
+    if(class_exists('Lasercommerce_Visibility')){
+        Lasercommerce_Visibility::user_can_read_term($user_id, $term_id);
     } else {
         return false;
     }
@@ -726,14 +738,14 @@ function tanvas_term_get_required_tiers($term, $user = null) {
     $term_id = $term->term_id; 
     
     if (class_exists('Lasercommerce_Plugin')) {
-        global $Lasercommerce_Plugin;
+        // global $Lasercommerce_Plugin;
         if (isset($Lasercommerce_Plugin)) {
             $required_tierIDs = array();
             $this_id = $term_id; 
             do{
                 if (TANVAS_DEBUG) error_log($_procedure . " -> any requirements for term? : " . $this_id);
                 $term = get_term_by('id', $this_id, 'product_cat');
-                $this_required_tierIDs = $Lasercommerce_Plugin->visibility->get_term_read_tiers($this_id);
+                $this_required_tierIDs = Lasercommerce_Visibility::get_term_read_tiers($this_id);
                 if($this_required_tierIDs){
                     if (TANVAS_DEBUG) error_log($_procedure . " --> yes " . serialize($this_required_tierIDs) );
                     $required_tierIDs = array_unique(array_merge($this_required_tierIDs, $required_tierIDs));
@@ -743,7 +755,7 @@ function tanvas_term_get_required_tiers($term, $user = null) {
                 $this_id = $term->parent;
             } while($this_id);
             if($required_tierIDs){
-                $required_tiers = $Lasercommerce_Plugin->tree->getTiers($required_tierIDs);
+                $required_tiers = Lasercommerce_Tier_Tree::instance()->getTiers($required_tierIDs);
             }
         }
     }
@@ -979,17 +991,18 @@ function tanvas_term_messages() {
 function tanvas_post_get_required_tiers($_product = null) {
     $_procedure = "POST_REQUIRED_TIERS: ";
     $required_tiers = array();
-    if (!$_product) {
-        global $product;
-        $_product = $product;
-    }
     if (class_exists('Lasercommerce_Plugin')) {
-        global $Lasercommerce_Plugin;
-        if (isset($Lasercommerce_Plugin)) {
-            $purchase_tierIDs = $Lasercommerce_Plugin->maybeGetPurchaseTierIDs(array(), $_product);
-            $required_tiers = $Lasercommerce_Plugin->tree->getTiers(array_reverse($purchase_tierIDs));
-        }
+        $_product = Lasercommerce_Plugin::instance()->getProductObject($_product);
+        $purchase_tierIDs = Lasercommerce_Plugin::instance()->maybeGetPurchaseTierIDs(array(), $_product);
+        $required_tiers = Lasercommerce_Tier_Tree::instance()->getTiers(array_reverse($purchase_tierIDs));
     }
+    // if (class_exists('Lasercommerce_Plugin')) {
+    //     global $Lasercommerce_Plugin;
+    //     if (isset($Lasercommerce_Plugin)) {
+    //         $purchase_tierIDs = $Lasercommerce_Plugin->maybeGetPurchaseTierIDs(array(), $_product);
+    //         $required_tiers = Lasercommerce_Tier_Tree::instance()->getTiers(array_reverse($purchase_tierIDs));
+    //     }
+    // }
     if (TANVAS_DEBUG) error_log($_procedure . "required_tiers: " . serialize($required_tiers));
     return $required_tiers;
 }
@@ -1000,15 +1013,9 @@ function tanvas_post_tier_visible($_product = null) {
     $_procedure = "POST_VISIBLE_TIERS: ";
     
     $visible = true;
-    if (!$_product) {
-        global $product;
-        $_product = $product;
-    }
     if (class_exists('Lasercommerce_Plugin')) {
-        global $Lasercommerce_Plugin;
-        if (isset($Lasercommerce_Plugin)) {
-            $visible = $Lasercommerce_Plugin->maybeIsPurchasable(false, $_product);
-        }
+        $_product = Lasercommerce_Plugin::instance()->getProductObject($_product);
+        $visible = Lasercommerce_Plugin::instance()->maybeIsPurchasable(false, $_product);
     } 
     else {
         if (TANVAS_DEBUG) error_log($_procedure . "LC plugin nonexistent");
@@ -1150,11 +1157,15 @@ function tanvas_wholesale_content_restricted_shortcode($args, $content=""){
         'object_type' => 'product_cat'
     ), $args);
 
-    if (class_exists('Lasercommerce_Plugin')) {
-        global $Lasercommerce_Plugin;
-        if (isset($Lasercommerce_Plugin)) {
-            $required_authorities = array($Lasercommerce_Plugin->tree->getWholesaleTier() );
-        }
+    $required_authorities = array();
+    if (class_exists('Lasercommerce_Tier_Tree')) {
+        $required_authorities = array(
+            $required_authorities = Lasercommerce_Tier_Tree::instance()->getWholesaleTier()
+        );
+        // global $Lasercommerce_Plugin;
+        // if (isset($Lasercommerce_Plugin)) {
+        //     $required_authorities = array($Lasercommerce_Plugin->tree->getWholesaleTier() );
+        // }
     }
     $user_authorities = tanvas_get_user_tiers();
     $object_type = $args['object_type'];
@@ -1200,24 +1211,26 @@ function tanvas_tier_restrict_content_shortcode($args, $content){
             $message_visible = false;
             $required_tier_ids = explode(',', $args['tiers']);
             // $out .= "required: " . $args['tiers']."<br/>";
-            if (class_exists('Lasercommerce_Plugin')) {
-                global $Lasercommerce_Plugin;
-                if (isset($Lasercommerce_Plugin)) {
-                    // $message_visible = false;
-                    // $required_tier_ids = array($Lasercommerce_Plugin->tree->getWholesaleTier() );
-                    $message_visible = $Lasercommerce_Plugin->visibility->tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
-                    // $out .= "visible: " . ($message_visible) ."<br/>";
-                }
+            if (class_exists('Lasercommerce_Visibility')) {
+                $message_visible = Lasercommerce_Visibility::tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
+                // global $Lasercommerce_Plugin;
+                // if (isset($Lasercommerce_Plugin)) {
+                //     // $message_visible = false;
+                //     // $required_tier_ids = array($Lasercommerce_Plugin->tree->getWholesaleTier() );
+                //     $message_visible = $Lasercommerce_Plugin->visibility->tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
+                //     // $out .= "visible: " . ($message_visible) ."<br/>";
+                // }
             }
         } elseif (isset($args['hide_tiers']) and $args['hide_tiers']) {
             $required_tier_ids = explode(',', $args['hide_tiers']);
             // $out .= "hide_tiers: " . $args['hide_tiers']."<br/>";
-            if(class_exists('Lasercommerce_Plugin')) {
-                global $Lasercommerce_Plugin;
-                if(isset($Lasercommerce_Plugin)){
-                    $message_visible = ! $Lasercommerce_Plugin->visibility->tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
-                    // $out .= "visible: " . ($message_visible) . "<br/>";
-                }
+            if(class_exists('Lasercommerce_Visibility')) {
+                $message_visible = Lasercommerc_Visibility::tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
+                // global $Lasercommerce_Plugin;
+                // if(isset($Lasercommerce_Plugin)){
+                //     $message_visible = ! $Lasercommerce_Plugin->visibility->tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
+                //     // $out .= "visible: " . ($message_visible) . "<br/>";
+                // }
             }
         }
     }
