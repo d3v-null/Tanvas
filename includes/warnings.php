@@ -1176,11 +1176,16 @@ function tanvas_wholesale_content_restricted_shortcode($args, $content=""){
 }
 
 function tanvas_tier_restrict_content_shortcode($args, $content){
+    $_procedure = "TNV_TIER_RESTR_CONT: ";
+
     $args = shortcode_atts( array(
         'tiers' => '',
         'hide_tiers' => '',
         'logged_in' => '',
     ), $args);
+
+    if (TANVAS_DEBUG) error_log($_procedure . "args: ". serialize($args));
+    if (TANVAS_DEBUG) error_log($_procedure . "content: ". serialize($content));
 
     // $out = '';
 
@@ -1225,7 +1230,7 @@ function tanvas_tier_restrict_content_shortcode($args, $content){
             $required_tier_ids = explode(',', $args['hide_tiers']);
             // $out .= "hide_tiers: " . $args['hide_tiers']."<br/>";
             if(class_exists('Lasercommerce_Visibility')) {
-                $message_visible = Lasercommerc_Visibility::tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
+                $message_visible = ! Lasercommerce_Visibility::tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
                 // global $Lasercommerce_Plugin;
                 // if(isset($Lasercommerce_Plugin)){
                 //     $message_visible = ! $Lasercommerce_Plugin->visibility->tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
@@ -1236,9 +1241,12 @@ function tanvas_tier_restrict_content_shortcode($args, $content){
     }
 
     if( $message_visible){
+        if (TANVAS_DEBUG) error_log($_procedure . "not visible");
+
         return do_shortcode($content);
         // return $out . do_shortcode($content);
     } else{
+        if (TANVAS_DEBUG) error_log($_procedure . "visible");
         return '';
         // return $out;
     }
