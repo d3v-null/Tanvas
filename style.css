@@ -957,3 +957,7 @@ p.demo_store {
 	text-overflow: ellipsis;
  }
 
+/** Add extra spacing to pagagraphs */
+div.message_content {
+	padding-bottom: 10px;
+}
