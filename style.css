@@ -916,6 +916,7 @@ p.demo_store {
  }
  .tanvas_product_cat_image {
      display: inline-block;
+     max-width: 100% !important;
  }
  .tanvas_anteposed_gold {
      position: relative;
@@ -932,6 +933,7 @@ p.demo_store {
      background-image: url("http://technotea.com.au/wp-content/themes/tanvas/img/gold-background.jpg");
      background-size: cover;
  }
+
  .tanvas_product_cat_container h3{
      position: absolute;
      vertical-align: center;
