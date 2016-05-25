@@ -12,33 +12,105 @@
 
 function tanvas_add_newtab_metabox_field($metaboxes){
   if ( get_post_type() == "slide" ) {
-    $metaboxes[] = array (  "name" => "custom",
-                            "label" => "Custom field",
-                            "type" => "text",
-                            "desc" => "description");
+    $metaboxes[] = array (  "name" => "newtab",
+                            "label" => "Open in new tab",
+                            "type" => "checkbox",
+                            "desc" => "Opens the slider link in a new tab");
   }
   return $metaboxes;
 }
 
 add_filter('tanvas_metaboxes', 'tanvas_add_newtab_metabox_field');
 
+function tanvas_add_schedule_metabox_fields($metaboxes){
+  if ( get_post_type() == "slide" ) {
+    $metaboxes[] = array (  "name" => "schedule_start",
+                            "label" => "Schedule Start Date",
+                            "type" => "text",
+                            "desc" => "The date that the slider starts (YYYY-MM-DD)");
+
+    $metaboxes[] = array (  "name" => "schedule_end",
+                            "label" => "Schedule End Date",
+                            "type" => "text",
+                            "desc" => "The date that the slider ends (YYYY-MM-DD)");
+  }
+  return $metaboxes;
+}
+
+add_filter('tanvas_metaboxes', 'tanvas_add_schedule_metabox_fields');
+
+//gets a list of slideIDs that have been elected to have their links open in a newtab
+function tanvas_get_newtab_slides(){
+  global $woo_options;
+
+  // $defaults = array(
+  //           'id' => 'loopedSlider',
+  //           'pagination' => false,
+  //           'width' => '960',
+  //           'order' => 'ASC',
+  //           'posts_per_page' => '5',
+  //           'slide_page' => $options['slider_biz_slide_group'],
+  //           'use_slide_page' => false
+  //          );
+  //
+  // $posts_per_page = $woo_options['woo_slider_biz_number'];
+  // $post_order = $woo_options['woo_slider_biz_order'];
+  //
+  // $args = wp_parse_args( $args, $defaults );
+  //
+  // $query_args = array(
+  //         'posts_per_page' => $posts_per_page,
+  //         'order' => $post_order,
+  //         'use_slide_page' => $args['use_slide_page'],
+  //         'slide_page_terms' => $args['slide_page']
+  //       );
+  //
+  // $slides = woo_slider_get_slides( $query_args );
+
+
+  $query_args = array(
+    'post_type' => 'slide' ,
+    'meta_key' => 'newtab',
+    'meta_value' => 'true',
+  );
+
+
+  $slides = false;
+
+  $query = get_posts( $query_args );
+
+  if ( ! is_wp_error( $query ) && ( 0 < count( $query ) ) ) {
+    $slides = $query;
+  }
+
+  if(TANVAS_DEBUG) error_log("flexslider mods: slides:".serialize($slides));
+
+  return $slides;
+
+}
+
 function tanvas_load_flexslider_mod_js_footer(){
   if(TANVAS_DEBUG) error_log("flexslider mods: loading js");
-  wp_enqueue_script(
-    'override-flexslider-target',
-    wp_make_link_relative(get_stylesheet_directory_uri(). '/js/override-flexslider-target.js') ,
-    // plugin_dir_url( __FILE__ ) . 'js/overwrite-flexslider-target.js',
-    array('jquery'),
-    false,
-    true
-  );
-  wp_localize_script(
-    'override-flexslider-target',
-    'flexslider_target_params',
-    array('target_overrides' => array(
-      '10712' => '_blank'
-    ) )
-  );
+  $newtab_slides = tanvas_get_newtab_slides();
+  if($newtab_slides){
+    wp_enqueue_script(
+      'override-flexslider-target',
+      wp_make_link_relative(get_stylesheet_directory_uri(). '/js/override-flexslider-target.js') ,
+      // plugin_dir_url( __FILE__ ) . 'js/overwrite-flexslider-target.js',
+      array('jquery'),
+      false,
+      true
+    );
+    $target_overrides = array();
+    foreach ($newtab_slides as $post) {
+    $target_overrides[$post->ID] = '_blank';
+    }
+    wp_localize_script(
+      'override-flexslider-target',
+      'flexslider_target_params',
+      array('target_overrides' => $target_overrides)
+    );
+  }
 }
 
 function tanvas_maybe_load_flexslider_mod_js_footer(){
