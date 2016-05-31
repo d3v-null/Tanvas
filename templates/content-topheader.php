@@ -5,12 +5,12 @@
 				<ul class="woo-contact-us">
 					<li id="cphone">
 						<!-- <a href="tel://0477764985" class="cphone">(+61) 0477 764 985 </a> -->
-						<a href="tel://61477764985" class="cphone">SMS <i class="fa fa-mobile"></i> (+61) 0477 764 985</a> 
+						<a href="tel://61477764985" class="cphone">SMS <i class="fa fa-mobile"></i> (+61) 0477 764 985</a>
 					</li>
 					<li class="border">
 						<!--a href="tel://1300135941" class="call">1300 135 941</a-->
 						<p class="woo-link">
-						<?php 
+						<?php
 						$account_url = get_site_url(0,"my-account");
 						if( is_user_logged_in() ){
 							global $current_user;
@@ -32,10 +32,10 @@
 							echo " | <a rel='nofollow' href='$logout_url'>Log Out</a>";
 
 						} else {
-							$login_url = wp_login_url( $account_url );
+							$login_url = wp_login_url( tanvas_get_current_page_url() );
 							// $login_url = $account_url;
 							$help_url = get_site_url(0,"my-account/help");
-							$request_url = wp_registration_url(); 
+							$request_url = wp_registration_url();
 							echo "<a rel='nofollow' href='$login_url'>Log In</a>";
 							echo " | <a rel='nofollow' href='$request_url'>Register</a>";
 							echo " | <a rel='nofollow' href='$help_url'>Account Help</a>";
@@ -43,16 +43,16 @@
 						?>
 						</p>
 					</li>
-					<li class="woo-items">				
+					<li class="woo-items">
 						<a class="bag" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
 							<?php echo sprintf (_n( '%d item', '%d items', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?>
-						</a> 
+						</a>
 						|
 						<a class="" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
 							<?php echo WC()->cart->get_cart_total(); ?>
 						</a>
 					</li>
-				</ul>	
+				</ul>
 			</div>
 		</div>
 	</div>
