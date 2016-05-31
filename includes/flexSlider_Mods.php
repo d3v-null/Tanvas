@@ -22,70 +22,6 @@ function tanvas_add_newtab_metabox_field($metaboxes){
 
 add_filter('tanvas_metaboxes', 'tanvas_add_newtab_metabox_field');
 
-// function tanvas_add_schedule_metabox_fields($metaboxes){
-//   if ( get_post_type() == "slide" ) {
-//
-//     $metaboxes[] = array (  "name" => "schedule_enable",
-//                             "label" => "Enable Schedule",
-//                             "type" => "checkbox",
-//                             "desc" => "Enable Scheduling for this Slide"
-//                           );
-//
-//     // $metaboxes[] = array (  "name" => "schedule_start",
-//     //                         "label" => "Schedule Start Date",
-//     //                         "type" => "timestamp",
-//     //                         "desc" => "The date that the slider starts"
-//     //                       );
-//
-//     $metaboxes[] = array (  "name" => "schedule_end",
-//                             "label" => "Schedule End Date",
-//                             "type" => "timestamp",
-//                             "desc" =>
-//   "The date that the slider ends (to set publish date, use publish metabox)",
-//                         );
-//   }
-//   return $metaboxes;
-// }
-//
-// add_filter('tanvas_metaboxes', 'tanvas_add_schedule_metabox_fields');
-
-
-// function tanvas_get_schedule_slides(){
-//   $query_args = array(
-//     'post_type' => 'slide' ,
-//     'meta_key' => 'schedule_enable',
-//     'meta_value' => 'true'
-//   );
-//
-//   $slides = false;
-//
-//   $query = get_posts( $query_args );
-//
-//   if ( ! is_wp_error( $query ) && ( 0 < count( $query ) ) ) {
-//     $slides = $query;
-//   }
-//
-//   if(TANVAS_DEBUG) error_log("flexslider mods: schedule slides:".serialize($slides));
-//
-//   return $slides;
-// }
-//
-// function tanvas_make_scheduled_slide_changes(){
-//   $schedule_slides = tanvas_get_schedule_slides();
-//   if( $schedule_slides ){
-//     foreach (schedule_slides as $slide) {
-//       // $start_timestamp = get_post_meta($slide->ID, 'schedule_start');
-//       $end_timestamp = get_post_meta($slide->ID, 'schedule_end');
-//       $now_timestamp = time();
-//       $current_post_status = $slide->post_status;
-//       if($end_timestamp < $now_timestamp){
-//         $new_post_status = $current_post_status;
-//       }
-//
-//     }
-//   }
-// }
-
 //gets a list of slideIDs that have been elected to have their links open in a newtab
 function tanvas_get_newtab_slides(){
   $query_args = array(
@@ -151,6 +87,15 @@ function tanvas_check_load_slider(){
 }
 
 add_action('woo_head', 'tanvas_check_load_slider', 9);
+
+function tanvas_change_woo_slider_width($slider_args){
+    $slider_args['width'] = '1200';
+    return $slider_args;
+}
+
+add_filter('woo_slider_biz_view_args', 'tanvas_change_woo_slider_width');
+
+// $view_args = apply_filters( 'woo_slider_biz_view_args', $view_args );
 
 
 ?>
