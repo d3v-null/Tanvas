@@ -13,8 +13,7 @@
 						<?php
 						$account_url = get_site_url(0,"my-account");
 						if( is_user_logged_in() ){
-							global $current_user;
-							get_currentuserinfo();
+							$current_user = wp_get_current_user();
 							$display_name = $current_user->display_name;
 							echo "Hello <strong>".$display_name."</strong>";
 							$user_ID = $current_user->ID;

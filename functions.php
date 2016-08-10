@@ -12,6 +12,49 @@ function woo_metaboxes_add($metaboxes){
 	return $metaboxes;
 }
 
+function woo_options_add($options){
+
+	$options[] = array( "name" => __( 'Tanvas Settings', 'tanvas'),
+						"icon" => "styling",
+						"type" => "heading");
+	$options[] = array( "name" => __( 'Brand Styling', 'tanvas'),
+						"type" => "subheading");
+	$options[] = array( "name" =>  __( 'Brand Color', 'tanvas' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+						"id" => "tanvas_style_brand_color",
+						"std" => "",
+						"type" => "color");
+	$options[] = array( "name" =>  __( 'Brand Hover Color', 'tanvas' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+						"id" => "tanvas_style_brand_hover_color",
+						"std" => "",
+						"type" => "color");
+	return $options;
+}
+
+/**
+ * Helper function to return the theme option value.
+ * If no value has been saved, it returns $default.
+ * Needed because options are saved as serialized strings.
+ *
+ * Not in a class to support backwards compatibility in themes.
+ */
+if ( ! function_exists( 'of_get_option' ) ) :
+function of_get_option( $name, $default = false ) {
+
+	$option_name = '';
+	// Get option settings from database
+	$options = get_option( 'tanvas' );
+
+	// Return specific option
+	if ( isset( $options[$name] ) ) {
+		return $options[$name];
+	}
+
+	return $default;
+}
+endif;
+
 include_once('widgets/doorway-button-widget.php');
 include_once('widgets/custom-latest-posts-widget.php');
 include_once('widgets/custom-social-media-widget.php');
@@ -19,8 +62,11 @@ include_once('widgets/woocommerce-my-account-widget.php');
 include_once('includes/warnings.php');
 include_once('includes/PNG_Reader.php');
 include_once('includes/flexSlider_Mods.php');
+include_once('includes/extras.php');
 
-$woo_options = get_option( 'woo_options' );
+// $woo_options = get_option( 'woo_options' );
+
+
 
 // TODO: Allow discounts to be specified based on how many liters of solution
 
