@@ -611,4 +611,11 @@ function tanvas_print_timestamp() {
 
 add_action('woocommerce_email_footer', 'tanvas_print_timestamp', 9, 2 );
 
+/* Remove strict password requirements */
+
+function remove_wc_password_meter() {
+wp_dequeue_script( 'wc-password-strength-meter' );
+}
+add_action( 'wp_print_scripts', 'remove_wc_password_meter', 100 );
+
 ?>
