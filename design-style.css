@@ -770,7 +770,7 @@ ul.social-icons a.googleplus{
 
 .primary-navigation ul ul a:hover,
 .primary-navigation ul ul li.focus > a {
-	background-color: rgba(209, 170, 103, 0.85);
+	/*background-color: rgba(209, 170, 103, 0.85);*/
 	color: #333333 !important;
 }
 

@@ -51,7 +51,11 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
             $brand_hover_color = '#A5854F';
         }
         if ($brand_hover_color) {
-            $css_statement .= "a.shop:hover";
+            $css_statement .= implode(",\n", array(
+                "a.shop:hover",
+                ".primary-navigation ul ul a:hover",
+                ".primary-navigation ul ul li.focus > a"
+            ));
             $css_statement .= " { background-color: $brand_hover_color !important; }\n";
             echo $css_statement;
         }
