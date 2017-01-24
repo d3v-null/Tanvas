@@ -5,6 +5,55 @@ if(!defined('TANVAS_DEBUG') ){
 	define( 'TANVAS_DEBUG', 'true');
 }
 
+function woo_metaboxes_add($metaboxes){
+	// if(TANVAS_DEBUG) error_log("TANVAS woo_custom_template:".serialize(get_option('woo_custom_template')));
+	if(TANVAS_DEBUG) error_log("TANVAS METABOXES:".serialize($metaboxes));
+	$metaboxes = apply_filters('tanvas_metaboxes', $metaboxes);
+	return $metaboxes;
+}
+
+function woo_options_add($options){
+
+	$options[] = array( "name" => __( 'Tanvas Settings', 'tanvas'),
+						"icon" => "styling",
+						"type" => "heading");
+	$options[] = array( "name" => __( 'Brand Styling', 'tanvas'),
+						"type" => "subheading");
+	$options[] = array( "name" =>  __( 'Brand Color', 'tanvas' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+						"id" => "tanvas_style_brand_color",
+						"std" => "",
+						"type" => "color");
+	$options[] = array( "name" =>  __( 'Brand Hover Color', 'tanvas' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+						"id" => "tanvas_style_brand_hover_color",
+						"std" => "",
+						"type" => "color");
+	return $options;
+}
+
+/**
+ * Helper function to return the theme option value.
+ * If no value has been saved, it returns $default.
+ * Needed because options are saved as serialized strings.
+ *
+ * Not in a class to support backwards compatibility in themes.
+ */
+if ( ! function_exists( 'of_get_option' ) ) :
+function of_get_option( $name, $default = false ) {
+
+	$option_name = '';
+	// Get option settings from database
+	$options = get_option( 'tanvas' );
+
+	// Return specific option
+	if ( isset( $options[$name] ) ) {
+		return $options[$name];
+	}
+
+	return $default;
+}
+endif;
 
 include_once('widgets/doorway-button-widget.php');
 include_once('widgets/custom-latest-posts-widget.php');
@@ -12,8 +61,13 @@ include_once('widgets/custom-social-media-widget.php');
 include_once('widgets/woocommerce-my-account-widget.php');
 include_once('includes/warnings.php');
 include_once('includes/PNG_Reader.php');
+include_once('includes/flexSlider_Mods.php');
+include_once('includes/extras.php');
+include_once('includes/shortcodes.php');
 
-$woo_options = get_option( 'woo_options' );
+// $woo_options = get_option( 'woo_options' );
+
+
 
 // TODO: Allow discounts to be specified based on how many liters of solution
 
@@ -23,7 +77,7 @@ function theme_enqueue_styles(){
 	wp_enqueue_style('owl.carousel', get_stylesheet_directory_uri() . '/css/owl.carousel.css');
 	wp_enqueue_style('owl.theme', get_stylesheet_directory_uri() . '/css/owl.theme.css');
 	wp_enqueue_style('design-style', get_stylesheet_directory_uri() . '/design-style.css');
-	
+
 	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style('flexboxgrid', get_stylesheet_directory_uri() . '/css/flexboxgrid.css');
 
@@ -38,9 +92,9 @@ function theme_enqueue_styles(){
 	}
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
-	
+
 function Tanvas_noticeWoocommerceNotInstalled() {
-    echo 
+    echo
         '<div class="updated fade">' .
         __('Error: Theme "Tanvas" requires WooCommerce to be installed',  'LaserCommerce') .
         '</div>';
@@ -55,7 +109,7 @@ function Tanvas_WoocommerceCheck() {
 }
 
 function Tanvas_noticeLasercommerceNotInstalled() {
-    echo 
+    echo
         '<div class="updated fade">' .
         __('Error: Theme "Tanvas" requires LaserCommerce to be installed',  'LaserCommerce') .
         '</div>';
@@ -89,8 +143,8 @@ add_action('login_form', 'tanvas_login_message');
 
 /* Loads script to move site notice to within wrapper */
 add_action('wp_enqueue_scripts', function(){
-		wp_enqueue_script( 
-			'reposition-site-message', 
+		wp_enqueue_script(
+			'reposition-site-message',
 			get_stylesheet_directory_uri().'/js/reposition-site-message.js',
 			array('jquery'),
 			0.1
@@ -103,7 +157,7 @@ add_filter('woo_load_slider_js', function($load_slider_js){
 	// if(WP_DEBUG) error_log("woo_load_slider_js filter called wit h" . ($load_slider_js?"T":"F"));
 	if(is_page_template( 'template-home.php')){
 		$load_slider_js = true;
-	} 
+	}
 	// if(WP_DEBUG) error_log("woo_load_slider_js returning ". ($load_slider_js?"T":"F"));
 	return $load_slider_js;
 
@@ -133,7 +187,7 @@ function tanvas_widgets_init() {
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h2>',
 		'after_title'	=> '</h2>'
-	));	
+	));
 	register_sidebar( array (
 		'name' 			=> 'Home Below Doorway Right',
 		'id'			=> 'tanvas_home_right',
@@ -141,7 +195,7 @@ function tanvas_widgets_init() {
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h2>',
 		'after_title'	=> '</h2>'
-	));	
+	));
 	register_sidebar( array (
 		'name' 			=> 'Home Doorway Bottom',
 		'id'			=> 'tanvas_home_doorway_bottom',
@@ -149,8 +203,8 @@ function tanvas_widgets_init() {
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h2>',
 		'after_title'	=> '</h2>'
-	));	
-	
+	));
+
 	register_sidebar(array(
 		'name' => __( 'Footer Widgets One', TANVAS_DOMAIN ),
 		'id' => 'widget-one',
@@ -159,7 +213,7 @@ function tanvas_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>'
 	));
-	
+
 	register_sidebar(array(
 		'name' => __( 'Footer Widgets Two', TANVAS_DOMAIN ),
 		'id' => 'widget-two',
@@ -168,7 +222,7 @@ function tanvas_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>'
 	));
-	
+
 	register_sidebar(array(
 		'name' => __( 'Footer Widgets Three', TANVAS_DOMAIN ),
 		'id' => 'widget-three',
@@ -177,7 +231,7 @@ function tanvas_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>'
 	));
-	
+
 	register_sidebar(array(
 		'name' => __( 'Footer Widgets Four', TANVAS_DOMAIN ),
 		'id' => 'widget-four',
@@ -186,7 +240,7 @@ function tanvas_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>'
 	));
-	
+
 	register_sidebar(array(
 		'name' => __( 'Footer Widgets Five', TANVAS_DOMAIN ),
 		'id' => 'widget-five',
@@ -258,7 +312,7 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 3
 foreach ( array( 'pre_term_description' ) as $filter ) {
     remove_filter( $filter, 'wp_filter_kses' );
 }
- 
+
 foreach ( array( 'term_description' ) as $filter ) {
     remove_filter( $filter, 'wp_kses_data' );
 }
@@ -288,7 +342,7 @@ foreach ( array( 'term_description' ) as $filter ) {
 // });
 
 // add_filter(
-// 	'loop_shop_columns', 
+// 	'loop_shop_columns',
 // 	function($cols){
 // 		if(is_product_category() && !woocommerce_products_will_display()){
 // 			return 1;
@@ -296,7 +350,7 @@ foreach ( array( 'term_description' ) as $filter ) {
 // 			return $cols;
 // 		}
 // 	},
-// 	999, 
+// 	999,
 // 	1
 // );
 
@@ -338,6 +392,11 @@ function my_login_stylesheet() {
 }
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
 /**
  * change loop shop columns
  */
@@ -351,10 +410,10 @@ add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
 // change the css if there are 3 columns
 // function inject_column_css(){
-// 	// if(WP_DEBUG) error_log("called inject_column_css callback");	
+// 	// if(WP_DEBUG) error_log("called inject_column_css callback");
 // 	$columns = apply_filters( 'loop_shop_columns', 3);
 // 	// if(WP_DEBUG) error_log("-> columns: $columns");
-// 	if ($columns == 3 ){ 
+// 	if ($columns == 3 ){
 // 		<!-- <style type="text/css">
 // 		ul.products li.product {
 // 			width: 30%;
@@ -384,9 +443,9 @@ add_action('the_title', 'shrink_product_title', 9999, 2);
 
 /*
  * wc_remove_related_products
- * 
+ *
  * Clear the query arguments for related products so none show.
- * Add this code to your theme functions.php file.  
+ * Add this code to your theme functions.php file.
  */
 // function wc_remove_related_products( $args ) {
 // 	return array();
@@ -400,8 +459,8 @@ add_action('the_title', 'shrink_product_title', 9999, 2);
  * Clear Attribute Select box if no available Variations
  */
 
-// do_action( 'woocommerce_before_add_to_cart_form' ); 
-function maybe_clear_attribute_select_box( ) { 
+// do_action( 'woocommerce_before_add_to_cart_form' );
+function maybe_clear_attribute_select_box( ) {
 	global $product;
 	if( isset($product) and $product->is_type('variable')){
 		$available_variations = $product->get_available_variations();
@@ -458,7 +517,7 @@ function tanvas_output_cart_price_notice(){
 	echo do_shortcode(
 		'[box type="info"]'.
 			__('Dear customer our new cart has just been launched, while we have endeavored to ensure all pricing is correct we reserve the right to revise all pricing in line with our current listed prices. We thank you for your understanding.', TANVAS_DOMAIN).'<br/>'.
-		'[/box]'		
+		'[/box]'
 	);
 }
 add_action( 'woocommerce_before_cart', 'tanvas_output_cart_price_notice');
@@ -476,60 +535,6 @@ function excerpt($limit) {
   $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
   return $excerpt;
 }
-
-// Fix twitter button
-
-function lc_shortcode_twitter($atts, $content = null) {
-   	global $post;
-   	extract(shortcode_atts(array(	'url' => '',
-   									'style' => '',
-   									'source' => '',
-   									'text' => '',
-   									'related' => '',
-   									'lang' => '',
-   									'float' => 'left',
-   									'use_post_url' => 'false',
-   									'recommend' => '',
-   									'hashtag' => '',
-   									'size' => '',
-   									 ), $atts));
-	$output = '';
-
-	if ( $url )
-		$output .= ' data-url="' . esc_url( $url ) . '"';
-
-	if ( $source )
-		$output .= ' data-via="' . esc_attr( $source ) . '"';
-
-	if ( $text )
-		$output .= ' data-text="' . esc_attr( $text ) . '"';
-
-	if ( $related )
-		$output .= ' data-related="' . esc_attr( $related ) . '"';
-
-	if ( $hashtag )
-		$output .= ' data-hashtags="' . esc_attr( $hashtag ) . '"';
-
-	if ( $size )
-		$output .= ' data-size="' . esc_attr( $size ) . '"';
-
-	if ( $lang )
-		$output .= ' data-lang="' . esc_attr( $lang ) . '"';
-
-	if ( $style != '' ) {
-		$output .= 'data-count="' . esc_attr( $style ) . '"';
-	}
-
-	if ( $use_post_url == 'true' && $url == '' ) {
-		$output .= ' data-url="' . get_permalink( $post->ID ) . '"';
-	}
-
-	$output = '<div class="woo-sc-twitter ' . esc_attr( $float ) . '"><a href="' . esc_url( 'https://twitter.com/share' ) . '" class="twitter-share-button"'. $output .'>' . __( 'Tweet', 'woothemes' ) . '</a><script type="text/javascript" src="' . esc_url ( 'https://platform.twitter.com/widgets.js' ) . '"></script></div>';
-	return $output;
-
-} // End woo_shortcode_twitter()
-
-add_shortcode( 'twitter-https', 'lc_shortcode_twitter' );
 
 /**
  * Remove deprecated constructor warnings
@@ -552,5 +557,12 @@ function tanvas_print_timestamp() {
 }
 
 add_action('woocommerce_email_footer', 'tanvas_print_timestamp', 9, 2 );
+
+/* Remove strict password requirements */
+
+function remove_wc_password_meter() {
+wp_dequeue_script( 'wc-password-strength-meter' );
+}
+add_action( 'wp_print_scripts', 'remove_wc_password_meter', 100 );
 
 ?>

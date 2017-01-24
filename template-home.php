@@ -16,7 +16,7 @@ $page_template = woo_get_page_template();
 ?>
     <!-- #content Starts -->
 	<?php woo_content_before(); ?>
-	<?php if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'true' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; } ?>
+	<?php // if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'true' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; } ?>
     <div id="content" class="col-full home">
 
     	<div id="main-sidebar-container" class="home-page">
@@ -26,17 +26,17 @@ $page_template = woo_get_page_template();
 			<?php // if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'false' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; } ?>
 
 			<!-- doorway button & sidebar widgets -->
-			<?php 
+			<?php
 				$left_active = is_active_sidebar('tanvas_home_doorway');
 				$right_active = is_active_sidebar('tanvas_home_doorway_sidebar');
 
 				if( $left_active or $right_active ){
-					
+
 					//echo '<div class="widget-area-container home row" id="doorway-button-sidebar-container">';
 					echo '<div id="doorway-button-sidebar-container" class="widget-area-container home foundation f-row">';
 
 					//$left_class = 'widget-area col-xs-12';
-					//$right_class = 'widget-area sidebar col-xs-12';	
+					//$right_class = 'widget-area sidebar col-xs-12';
 					$left_class = 'widget-area';
 					$right_class = 'widget-area';
 
@@ -56,7 +56,7 @@ $page_template = woo_get_page_template();
 							// echo "<div class='row' id='tanvas-home-doorway-button-wrapper'>";
 							// 	echo '<ul id="doorway-items" class="small-block-grid-2 medium-block-grid-2 large-block-grid-3">';
 							dynamic_sidebar('tanvas_home_doorway');
-							// 	echo '</ul>';	
+							// 	echo '</ul>';
 							// echo "</div> <!-- end tanvas-home-doorway-button-wrapper -->";
 						echo '</div> <!-- end tanvas-home-doorway-buttons -->';
 					}
@@ -86,11 +86,11 @@ $page_template = woo_get_page_template();
 				// 		echo '</div>';
 				// 	}
 				// 	echo '</div>';
-				// } 
+				// }
 			?>
 
 			<!-- middle widget areas -->
-			<?php 
+			<?php
 				$left_active = is_active_sidebar('tanvas_home_left');
 				$right_active = is_active_sidebar('tanvas_home_right');
 				if( $left_active|| $right_active){
@@ -110,11 +110,11 @@ $page_template = woo_get_page_template();
 						echo '</div>';
 					}
 					echo "</div>";
-				} 
+				}
 			?>
-			
+
 			<!-- bottom widget areas -->
-			<?php 
+			<?php
 				$bottom_active = is_active_sidebar('tanvas_home_doorway_bottom');
 				if( $bottom_active){
 						echo "<div class='' id='tanvas-home-doorway-bottom'>";

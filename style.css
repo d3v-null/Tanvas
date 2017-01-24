@@ -1,6 +1,6 @@
 /*
  Theme Name:   Tanvas
- Description:  Theme created for TechnoTan.com.au, child of Canvas by WooThemes
+ Description:  Theme created for Meridian Solutions, child of Canvas by WooThemes
  Author:       Derwent
  Author URI:   http://dev.laserphile.com
  Template:     canvas
@@ -62,7 +62,7 @@ section#main {
     padding: 20px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;  
+    box-sizing: border-box;
 }
 
 /* Scale down header image */
@@ -92,11 +92,11 @@ div.header-widget div.widget {
 	background: none;
 }
 div.header-widget div.widget p {
-	color:#d2ab67;
+	/*color:#d2ab67;*/
 	text-align:right;
 }
 div.header-widget div.widget a {
-	color:#d2ab67;
+	/*color:#d2ab67;*/
 	text-align:right;
 	font-weight:bold;
 }
@@ -129,13 +129,13 @@ div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget,
 aside#sidebar div.widget,
 div.widget-area#tanvas_home_right div.widget {
 	background-color: white;
-} 
+}
 
-div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
+/*div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
 div.widget-area#tanvas_home_right div.widget h2,
 aside#sidebar div.widget h3  {
 	color: #d1aa67;
-}
+}*/
 
 div.doorway-container {
 	min-height: 100px;
@@ -154,12 +154,6 @@ div.widget-area#tanvas_home_right div.widget {
 	border-style: solid;
 	border-width: medium;*/
 	/*border: 3px solid #020016;*/
-} 
-
-div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
-div.widget-area#tanvas_home_right div.widget h2,
-aside#sidebar div.widget h3  {
-	color: #d1aa67;
 }
 
 aside#sidebar div.widget p.buttons {
@@ -191,17 +185,17 @@ body.home section#main li.product-category.product {
 /*    border-style:solid;
     border-width: thick;
     border-color: #d1aa67;*/
-    -webkit-box-sizing: border-box; 
-    -moz-box-sizing: border-box;    
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
-    margin-bottom:36px;  
+    margin-bottom:36px;
 }
 body.home section#main li.product-category.product a img {
 	padding: 0;
 	margin: 0;
 }
 
-/** 
+/**
  * Archive attachment formatting
  */
 
@@ -226,14 +220,14 @@ body.archive.tax-product_cat img.attachment-full {
 		float: left;
 		clear: right;
 		padding: 10px;
-	    -webkit-box-sizing: border-box; 
-	    -moz-box-sizing: border-box;    
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
 	    box-sizing: border-box;
 	}
 
 	body.archive.tax-product_cat ul.products {
 		clear:both;
- 
+
 /**
  * Recent Posts Mods
  */
@@ -259,47 +253,47 @@ div.social-icons img {
 	#navigation {
 		clear: none;
 	}
-	
+
 	#navigation .menus.nav-icons:after {
 		content: "";
 		display: table;
 		clear: both;
 	}
-	
+
 	#navigation .menus.nav-icons .side-nav {
 		position: absolute;
 		top: 0;
 		right: 0;
 	}
-	
+
 	#navigation .menus.nav-icons-1 #main-nav {
 		margin-right: 4em;
 	}
-	
+
 	#navigation .menus.nav-icons-1 .side-nav {
 		width: 4em;
 	}
-	
+
 	#navigation .menus.nav-icons-2 #main-nav {
 		margin-right: 7em;
 	}
-	
+
 	#navigation .menus.nav-icons-2 .side-nav {
 		width: 7em;
 	}
-	
+
 	#navigation .menus.nav-icons-3 #main-nav {
 		margin-right: 10em;
 	}
-	
+
 	#navigation .menus.nav-icons-3 .side-nav {
 		width: 10em;
 	}
-	
+
 	#navigation .menus.nav-icons-4 #main-nav {
 		margin-right: 13em;
 	}
-	
+
 	#navigation .menus.nav-icons-4 .side-nav {
 		width: 13em;
 	}
@@ -312,41 +306,41 @@ div.social-icons img {
 		text-indent: 0;
 		overflow: visible;
 	}
-	
+
 	#navigation .cart-extended ul.cart a.cart-contents:before {
 		display: inline-block;
 		margin-right: .5em;
 		height: auto;
 	}
-	
+
 	#navigation .menus.nav-icons-1.cart-extended #main-nav {
 		margin-right: 13.5em;
 	}
-	
+
 	#navigation .menus.nav-icons-1.cart-extended .side-nav {
 		width: 13.5em;
 	}
-	
+
 	#navigation .menus.nav-icons-2.cart-extended #main-nav {
 		margin-right: 16.5em;
 	}
-	
+
 	#navigation .menus.nav-icons-2.cart-extended .side-nav {
 		width: 16.5em;
 	}
-	
+
 	#navigation .menus.nav-icons-3.cart-extended #main-nav {
 		margin-right: 19.5em;
 	}
-	
+
 	#navigation .menus.nav-icons-3.cart-extended .side-nav {
 		width: 19.5em;
 	}
-	
+
 	#navigation .menus.nav-icons-4.cart-extended #main-nav {
 		margin-right: 22.5em;
 	}
-	
+
 	#navigation .menus.nav-icons-4.cart-extended .side-nav {
 		width: 22.5em;
 	}
@@ -414,12 +408,12 @@ small.woocommerce-price-suffix {
 
 
 /* make the slider title color brown isntead of white */
-#loopedSlider.business-slider div.content div.title h2.title {
+/*#loopedSlider.business-slider div.content div.title h2.title {
 	color:#d2ab67;
 }
 #loopedSlider.business-slider div.content div.title h2.title a {
 	color:#d2ab67;
-}
+}*/
 
 /* fixing the footer */
 footer#footer.col-full {
@@ -431,9 +425,9 @@ footer#footer.col-full div {
 }
 
 /* joining the footer widgets together */
-section#footer-widgets {
+/*section#footer-widgets {
 	background-color:#d2ab67;
-}
+}*/
 section#footer-widgets div.block {
 	padding: 0px;
 	margin: 0px;
@@ -461,9 +455,9 @@ div#inner-wrapper nav#navigation.col-full {
 
 /* Woocommerce Cart widget width */
 @media only screen and (min-width: 768px) {
-	#navigation ul.cart a.cart-contents + ul, 
-	#navigation ul.cart a.search-contents + ul, 
-	#navigation ul.nav-search a.cart-contents + ul, 
+	#navigation ul.cart a.cart-contents + ul,
+	#navigation ul.cart a.search-contents + ul,
+	#navigation ul.nav-search a.cart-contents + ul,
 	#navigation ul.nav-search a.search-contents + ul{
 		width: 24em;
 	}
@@ -539,7 +533,7 @@ li.product a div.price_tier_table div.price_tier_row .price_tier_cell.tier_id {
 	border-top-right-radius: 3px;
 	border-top-style: none;
 	border-top-width: 0px;
-	color: rgb(255, 255, 255)!important ; 
+	color: rgb(255, 255, 255)!important ;
 	display: inline-block;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
@@ -573,7 +567,7 @@ div.ninja-forms-all-fields-wrap div.hidden-wrap{
 div.product-type-composite div.summary,
 div.product-type-bundle div.summary{
 	float:none;
-	width:100%;	
+	width:100%;
 }
 
 form.bundle_form,
@@ -595,8 +589,8 @@ strong.warning {
 	font-weight: bold;
 }
 
-/** 
- * Woocommerce Tanvas Buttons 
+/**
+ * Woocommerce Tanvas Buttons
  */
 
 a.woo-sc-button {
@@ -612,7 +606,7 @@ a.woo-sc-button {
 
 #main a.woo-sc-button.tanvas span.woo-{
 	font-weight: bold !important;
-	text-decoration: underline !important; 
+	text-decoration: underline !important;
 }
 
 /**
@@ -620,7 +614,7 @@ a.woo-sc-button {
  */
 
 div.product-info-summary {
-	display: table-row!important; 
+	display: table-row!important;
 }
 
 div.product-info-img {
@@ -650,7 +644,7 @@ div#wrapper-section{
  	background-color: gainsboro;
  }
 
- /** 
+ /**
   * Remove borders
   */
 
@@ -679,7 +673,7 @@ div.header div.columns {
     display: none;
 }
 /* Lessen Breadcrumb Emphasis */
-.breadcrumbs.woo-breadcrumbs, 
+.breadcrumbs.woo-breadcrumbs,
 .breadcrumb .breadcrumb-title {
     font-size: 11px;
     text-transform: uppercase;
@@ -716,13 +710,13 @@ li.product a div.price_tier_table {
 /** modify custom product-info table style to suit data sheet pdfs */
 table.product-info th {
 	background-color: black !important;
-	color: #d1aa67;
+	/*color: #d1aa67;*/
 	text-transform: uppercase;
 	font-size: 120%;
 	text-align: center;
 	border-bottom-style: solid !important;
-	border-bottom-color: #d1aa67 !important;
-	border-bottom-width: thick!important; 
+	/*border-bottom-color: #d1aa67 !important;*/
+	border-bottom-width: thick!important;
 }
 
 table.product-info th h2 {
@@ -739,7 +733,7 @@ table.product-info tr td{
 }
 
 table.product-info tr td img {
-	background-color: transparent !important; 
+	background-color: transparent !important;
 }
 
 /* modify display of trade and retail store buttons */
@@ -750,14 +744,14 @@ a.shop {
 	text-align: center;
 	color: #fff !important;
 	font: normal 31px/1.5em Arial, sans-serif !important;
-	background-color: #d1aa67;
+	/*background-color: #d1aa67;*/
 	border-radius: 5px;
 	max-width: 284px;
 	/*margin-top: 25px;*/
 	margin-top: 6px;
 	margin-right: 10px;
 	padding: 5px 20px;
-	line-height: 120% !important; 
+	line-height: 120% !important;
 	transition-duration: 0.6s;
 	-moz-transition-duration: 0.6s;
 	-webkit-transition-duration: 0.6s;
@@ -767,7 +761,7 @@ a.shop {
 
 a.shop:hover {
 	text-decoration: none;
-	background-color: #A5854F;
+	/*background-color: #A5854F;*/
 }
 
 div#split-shop-container {
@@ -806,7 +800,7 @@ div#split-shop-container a.split-shop {
 div[id*='widget_sp_image'] img.attachment-medium{
 	width: auto !important;
 	height: auto !important;
-	max-width: 100%; 
+	max-width: 100%;
 }
 
 /*Hide stupid paypal button on cart */
@@ -829,8 +823,8 @@ div.term-description table th
 	padding-right: 5px;
 }
 
-/* Lineup Buy Now Button - Pao 2/29/16 
- * 
+/* Lineup Buy Now Button - Pao 2/29/16
+ *
  * 1. Application Kits
  */
 /*.term-application-kits ul.products a h3 {min-height: 100px;}*/
@@ -838,7 +832,7 @@ div.term-description table th
 /* Add shadow to ubergrid text */
 
 body.home .uber-grid .uber-grid-cell-wrapper .uber-grid-cell-title{
-	text-shadow: 2px 2px 5px black; 
+	text-shadow: 2px 2px 5px black;
 	text-transform: uppercase;
 	/*font-family: Arial !important;*/
 }
@@ -875,7 +869,7 @@ p.demo_store {
      margin-bottom: .75em;
      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-     box-sizing: border-box; 
+     box-sizing: border-box;
      top:0;
      left:0;
      right: 0;
@@ -883,7 +877,7 @@ p.demo_store {
 
  ul.products li.product a .tanvas_product_cat_container img{
  	/* remove .75em margin from image */
- 	margin-bottom: 0;
+ 	margin-bottom: 0 !important;
  	/* remove width: auto */
     width: 100%;
     height: auto;
@@ -912,10 +906,11 @@ p.demo_store {
      display: block;
      position: relative;
      vertical-align: middle;
-     margin-bottom: 0;
+     margin-bottom: 0 !important;
  }
  .tanvas_product_cat_image {
      display: inline-block;
+     max-width: 100% !important;
  }
  .tanvas_anteposed_gold {
      position: relative;
@@ -932,6 +927,7 @@ p.demo_store {
      background-image: url("http://technotea.com.au/wp-content/themes/tanvas/img/gold-background.jpg");
      background-size: cover;
  }
+
  .tanvas_product_cat_container h3{
      position: absolute;
      vertical-align: center;
@@ -950,10 +946,14 @@ p.demo_store {
      margin-top: 0px;
      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-     box-sizing: border-box; 
+     box-sizing: border-box;
      z-index: 20;
-     text-shadow: 2px 2px 5px black; 
+     text-shadow: 2px 2px 5px black;
  	overflow: hidden;
 	text-overflow: ellipsis;
  }
 
+/** Add extra spacing to pagagraphs */
+div.message_content {
+	padding-bottom: 10px;
+}
