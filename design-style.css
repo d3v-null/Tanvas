@@ -791,15 +791,16 @@ ul.social-icons a.googleplus{
 
 .primary-navigation .menu-item-has-children:hover > a:after,
 .primary-navigation .page_item_has_children:hover > a:after {
-	background-image: url(img/menu-icon-hover.png);
+	/*background-image: url(img/menu-icon-hover.png);*/
 	background-size: 100% 100%;
 }
 
 .primary-navigation .menu-item-has-children > a:after,
 .primary-navigation .page_item_has_children > a:after {
-	content: "";
+	content: "▾";
+	font-family: "Arial Black";
 	display: inline-block;
-	background-image: url(img/menu-icon-black.png);
+	/*background-image: url(img/menu-icon-black.png);*/
 	background-size: 100% 100%;
 	height: 6px;
 	width: 10px;
@@ -866,9 +867,10 @@ ul.social-icons a.googleplus{
 }
 
 .main-menu-bottom ul#top-nav li.parent > a:after {
-	content: "";
+	content: "▾";
+	font-family: "Arial Black";
 	display: inline-block;
-	background-image: url(img/menu-icon.png);
+	/*background-image: url(img/menu-icon.png);*/
 	background-size: 100% 100%;
 	height: 6px;
 	width: 10px;
@@ -888,7 +890,7 @@ ul.social-icons a.googleplus{
 .main-menu-bottom ul#top-nav li.parent:hover > a:after,
 .main-menu-bottom ul#top-nav li.current_page_item.parent > a:after,
 .main-menu-bottom ul#top-nav li.current-menu-item.parent > a:after {
-	background-image: url(img/menu-icon-hover.png);
+	/*background-image: url(img/menu-icon-hover.png);*/
 	background-size: 100% 100%;
 }
 
