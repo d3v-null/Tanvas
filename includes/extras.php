@@ -54,7 +54,14 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
             $css_statement .= implode(",\n", array(
                 "a.shop:hover",
                 ".primary-navigation ul ul a:hover",
-                ".primary-navigation ul ul li.focus > a"
+                ".primary-navigation ul ul li.focus > a",
+                "body #wrapper .button:hover",
+                "body #wrapper #content .button:hover",
+                "body #wrapper #content #respond .form-submit input#submit:hover",
+                "input[type=submit]:hover",
+                "body #wrapper #searchsubmit:hover",
+                "#navigation ul.cart .button:hover",
+                "body #wrapper .woo-sc-button:hover",
             ));
             $css_statement .= " { background-color: $brand_hover_color !important; }\n";
             echo $css_statement;

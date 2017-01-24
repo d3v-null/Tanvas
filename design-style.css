@@ -41,7 +41,7 @@ input[type=submit]:hover,
 body #wrapper #searchsubmit:hover,
 #navigation ul.cart .button:hover,
 body #wrapper .woo-sc-button:hover {
-	background: #C09957 !important;
+	/*background: #C09957 !important;*/
 	transition-duration: 0.6s;
 	-moz-transition-duration: 0.6s;
 	-webkit-transition-duration: 0.6s;
