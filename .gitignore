@@ -2,3 +2,9 @@
 style.css.orig
 
 style.css.orig
+
+deployment-config.json
+
+.remote-sync.json
+
+.DS_Store

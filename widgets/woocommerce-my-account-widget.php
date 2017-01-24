@@ -587,9 +587,12 @@ add_action('wp_login_failed', 'wma_login_fail');
  
 function wma_login_fail($username){
     // Get the reffering page, where did the post submission come from?
-    $referer = parse_url($_SERVER['HTTP_REFERER']);
-	$referer= '//'.$referer['host'].''.$referer['path'];
- 
+    if(isset($_SERVER['HTTP_REFERER'])){
+        $referer = parse_url(isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:"");
+        $referer= '//'.$referer['host'].''.$referer['path'];
+    } else {
+        exit;
+    }
     // if there's a valid referrer, and it's not the default log-in screen
     if(!empty($referer) && strpos($referer,'wp-login') === false && strpos($referer,'wp-admin') === false){
         // let's append some information (login=failed) to the URL for the theme to use
