@@ -724,9 +724,9 @@ table.product-info th h2 {
 	margin-bottom: 0px !important;
 }
 
-table.product-info tr {
+/*table.product-info tr {
 	background-color: #ECDDBD !important;
-}
+}*/
 
 table.product-info tr td{
 	border-style: None !important;

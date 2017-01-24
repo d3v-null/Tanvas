@@ -4,9 +4,9 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
      * Get information from Theme Options and add it into wp_head
      */
     function get_tanvas_theme_options(){
-        echo '<style type="text/css">';
-
         global $woo_options;
+
+        $css_statement = "";
 
         if( isset($woo_options['tanvas_style_brand_color'])){
             $brand_color = $woo_options['tanvas_style_brand_color'];
@@ -14,7 +14,7 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
             $brand_color = '#d1aa67';
         }
         if ( $brand_color ) {
-            $css_statement = implode(",\n", array(
+            $css_statement .= implode(",\n", array(
                 "div.header-widget div.widget p",
                 "div.header-widget div.widget a",
                 "div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2",
@@ -42,7 +42,6 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
                 "ul.contact-us li.border"
             ));
             $css_statement .= "\n { border-color: $brand_color !important; }\n";
-            echo $css_statement;
         }
 
         if( isset($woo_options['tanvas_style_brand_hover_color'])){
@@ -63,11 +62,22 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
                 "#navigation ul.cart .button:hover",
                 "body #wrapper .woo-sc-button:hover",
             ));
-            $css_statement .= " { background-color: $brand_hover_color !important; }\n";
-            echo $css_statement;
+            $css_statement .= "\n { background-color: $brand_hover_color !important; }\n";
         }
 
-        echo '</style>';
+        if( isset($woo_options['tanvas_style_brochure_color'])) {
+            $brand_brochure_color = $woo_options['tanvas_style_brochure_color'];
+        } else {
+            $brand_brochure_color = "#ECDDBD";
+        }
+        if ($brand_brochure_color) {
+            $css_statement .= implode(",\n", array(
+                "table.product-info tr"
+            ));
+            $css_statement .= "\n { background-color: $brand_brochure_color !important; }\n";
+        }
+
+        echo '<style type="text/css">'.$css_statement.'</style>';
     }
 
 }
