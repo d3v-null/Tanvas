@@ -69,6 +69,7 @@ include_once('includes/PNG_Reader.php');
 include_once('includes/flexSlider_Mods.php');
 include_once('includes/extras.php');
 include_once('includes/shortcodes.php');
+include_once('includes/login-customization.php');
 
 // $woo_options = get_option( 'woo_options' );
 
@@ -131,16 +132,6 @@ function Tanvas_LasercommerceCheck() {
 if(!Tanvas_WoocommerceCheck() or !Tanvas_WoocommerceCheck()) {
 	return;
 }
-
-/**
- * Log In Mods
- */
-function tanvas_login_message(){
-	echo "<p>Forgot your email? <a href='/contact-us'>Contact head office</a></p>";
-}
-
-add_action('login_form', 'tanvas_login_message');
-
 
 /**
  * Demo Store Notice Mods
@@ -376,33 +367,6 @@ foreach ( array( 'term_description' ) as $filter ) {
 // add_filter('woocommerce_dynamic_pricing_is_cumulative', 'tanvas_remove_dynamic_cumulative', 10, 4);
 
 /**
- * Login Customizations
- */
-
-function my_login_logo() { ?>
-    <style type="text/css">
-        .login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/TechnoTan-Logo.png);
-            padding-bottom: 30px;
-            background-size: 240px;
-            width: 240px;
-            padding-bottom: 0px;
-        }
-    </style>
-<?php }
-add_action( 'login_enqueue_scripts', 'my_login_logo' );
-
-function my_login_stylesheet() {
-    wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/css/style-login.css' );
-}
-add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
-
-function my_login_logo_url() {
-    return home_url();
-}
-add_filter( 'login_headerurl', 'my_login_logo_url' );
-
-/**
  * change loop shop columns
  */
 // THIS IS NOT NEEDED NOW THAT WE USE PRODUCT ARCHIVE CUSTOMIZER
@@ -488,12 +452,6 @@ function maybe_clear_attribute_select_box( ) {
 }
 add_action('woocommerce_before_add_to_cart_form', 'maybe_clear_attribute_select_box');
 
-function tanvas_output_login_help(){
-	$help_link = get_site_url(0,"/my-account/help");
-	echo do_shortcode( '[button link="'.$help_link.'" bg_color="#d1aa67"]account help[/button]');
-}
-
-add_action( 'woocommerce_login_form_end', 'tanvas_output_login_help');
 
 add_action( 'init', 'register_my_menu' );
 function register_my_menu() {
