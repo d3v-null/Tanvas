@@ -26,7 +26,7 @@ function tanvas_output_login_message($message, $link){
 
 function tanvas_output_login_forgot_email_message(){
     tanvas_output_login_message(
-        "Forgot your email?",
+        __( "Forgot your email?" ),
         "/contact-us"
     );
 }
@@ -38,7 +38,7 @@ add_action('login_footer', 'tanvas_output_login_forgot_email_message', 5, 0);
 function tanvas_output_login_help(){
     $help_link = get_site_url(0,"/my-account/help");
     tanvas_output_login_message(
-        "Account help",
+        __( "Account help" ),
         $help_link
     );
 }
@@ -50,7 +50,7 @@ add_action( 'login_footer', 'tanvas_output_login_help', 5, 0);
 function tanvas_output_register_link(){
     $register_link = get_site_url(0, "/register/");
     tanvas_output_login_message(
-        "Register",
+        __( "Create an Account" ),
         $register_link
     );
 }
