@@ -1,6 +1,37 @@
 <?php
 
 /**
+ * Remove product count
+ */
+
+remove_filter('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+
+/**
+ * Add hooks to content-product_cat for category display
+ */
+function add_tanvas_product_container_open(){
+    echo '<div class="tanvas_product_cat_container">';
+}
+
+function add_tanvas_product_container_close(){
+    echo '</div><!-- end tanvas_product_cat_container -->';
+}
+
+function add_tanvas_product_cat_image_open(){
+    echo '<div class="tanvas_product_cat_image tanvas_anteposed_gold tanvas_dimmed">';
+}
+
+function add_tanvas_product_cat_image_close(){
+    echo '</div><!-- end tanvas_product_cat_image -->';
+}
+
+add_action('woocommerce_before_subcategory', 'add_tanvas_product_container_open', 11);
+add_action('woocommerce_after_subcategory', 'add_tanvas_product_container_close', 9);
+add_action('woocommerce_before_subcategory', 'add_tanvas_product_cat_image_open', 12);
+add_action('woocommerce_before_subcategory_title', 'add_tanvas_product_container_close', 11);
+
+
+/**
  * Product Category / Taxonomy Display Mods
  */
 

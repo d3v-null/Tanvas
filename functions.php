@@ -352,12 +352,6 @@ function excerpt($limit) {
 add_filter('deprecated_constructor_trigger_error', '__return_false');
 
 /**
- * Remove product count
- */
-
-remove_filter('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
-
-/**
  * Add timestamp to woocommerce order emails
  */
 
