@@ -44,7 +44,9 @@ class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
                 <?php
                     while ( have_posts() ) : the_post();
                     global $post;
-                    $featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                    // $featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                    $featured_image_id = get_post_thumbnail_id($post->ID);
+                    $featured_image_info = wp_get_attachment_image_src($featured_image_id, 'shop_thumbnail');
                 ?>
                     <li class="list">
                         <?php if ( $display_thumbnails ) : ?>
@@ -54,10 +56,14 @@ class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
                                 $img_class = "recent-posts-img";
                                 $img_alt = "";
                             ?>
-                                <center>
-                                    <?php woo_image("src=$featured_image&meta=$img_alt&width=$img_width&height=$img_height"); ?>
+                                <div class="recent-posts-container">
+
+                                    <?php
+                                        # woo_image("src=$featured_image&meta=$img_alt&width=$img_width&height=$img_height&force=true");
+                                        echo '<img src="'. $featured_image_info[0] .'" />';
+                                    ?>
                                     <!-- <img class="recent-posts-img" src="<?php //echo esc_url( get_stylesheet_directory_uri() ) ;?>/timthumb.php?src=<?php //echo $featured_image; ?>&amp;w=91&amp;h=91" /> -->
-                                </center>
+                                </div>
                             <?php } ?>
                         <?php endif;?>
 

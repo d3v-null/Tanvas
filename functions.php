@@ -79,12 +79,12 @@ include_once('includes/login-customization.php');
 
 /* pretends to be canvas then quits if woocommerce not installed */
 function theme_enqueue_styles(){
+	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style('foundation', get_stylesheet_directory_uri() . '/css/foundation.css' );
 	wp_enqueue_style('owl.carousel', get_stylesheet_directory_uri() . '/css/owl.carousel.css');
 	wp_enqueue_style('owl.theme', get_stylesheet_directory_uri() . '/css/owl.theme.css');
-	wp_enqueue_style('design-style', get_stylesheet_directory_uri() . '/design-style.css');
-
-	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style('design-style', get_stylesheet_directory_uri() . '/css/design-style.css');
+	wp_enqueue_style('recent-posts', get_stylesheet_directory_uri() . '/css/recent-posts-widget.css');
 	wp_enqueue_style('flexboxgrid', get_stylesheet_directory_uri() . '/css/flexboxgrid.css');
 
 	// wp_enqueue_style('this-style', get_stylesheet_uri() );
@@ -527,5 +527,16 @@ function remove_wc_password_meter() {
 wp_dequeue_script( 'wc-password-strength-meter' );
 }
 add_action( 'wp_print_scripts', 'remove_wc_password_meter', 100 );
+
+/* Just looking for all wp image sizes */
+
+function display_wp_image_sizes() {
+	global $_wp_additional_image_sizes;
+	print '<pre>';
+	print_r( $_wp_additional_image_sizes );
+	print '</pre>';
+}
+
+// add_action( 'the_content', 'display_wp_image_sizes');
 
 ?>
