@@ -51,23 +51,27 @@ class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
                     <li class="list">
                         <?php if ( $display_thumbnails ) : ?>
                             <?php if ( has_post_thumbnail() ) {
-                                $img_width = "91";
-                                $img_height = "91";
-                                $img_class = "recent-posts-img";
-                                $img_alt = "";
+                                // $img_width = "91";
+                                // $img_height = "91";
+                                // $img_class = "recent-posts-img";
+                                // $img_alt = "";
                             ?>
                                 <div class="recent-posts-container">
-
+                                    <a href="<?php the_permalink(); ?>">
                                     <?php
                                         # woo_image("src=$featured_image&meta=$img_alt&width=$img_width&height=$img_height&force=true");
                                         echo '<img src="'. $featured_image_info[0] .'" />';
                                     ?>
+                                    </a>
                                     <!-- <img class="recent-posts-img" src="<?php //echo esc_url( get_stylesheet_directory_uri() ) ;?>/timthumb.php?src=<?php //echo $featured_image; ?>&amp;w=91&amp;h=91" /> -->
                                 </div>
                             <?php } ?>
                         <?php endif;?>
 
-                        <center><h5 class="title"><?php the_title(); ?></h5></center>
+                        <center>
+                            <a href="<?php the_permalink(); ?>">
+                            <h5 class="title"><?php the_title(); ?></h5></center>
+                            </a>
 
                         <p><?php echo excerpt(10); ?></p>
                         <a class="read-more" href="<?php the_permalink(); ?>">Read more</a>
