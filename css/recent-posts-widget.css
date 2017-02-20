@@ -16,7 +16,7 @@
 ul#recent-posts-items .list {
 	padding: 0 20px 0;
 	/*border-right: 1px solid #d1aa67;*/
-	border-right: 1px solid;
+	/*border-right: 1px solid;*/
 }
 
 ul#recent-posts-items .list:last-child {
@@ -36,12 +36,16 @@ a.view-all {
 
 #recent-posts div.recent-posts-container {
   overflow: hidden;
-  width: 91px;
-  height: 91px;
+  width: 90%;
+  max-width: 300px;
   float: center;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
+}
+
+#recent-posts p {
+  max-width: 300px;
 }
 
 img.recent-posts-img {
@@ -51,8 +55,6 @@ img.recent-posts-img {
 	/*-khtml-border-radius: 50%;  for old Konqueror browsers */
 	/*margin-bottom: 10px;*/
 }
-
-#recent-posts
 
 
 @media only screen and (max-width: 800px) {
@@ -79,4 +81,8 @@ img.recent-posts-img {
 		border: 0;
 		padding: 0 30px 0;
 	}
+
+  #recent-posts .list {
+    margin-bottom: 40px;
+  }
 }

@@ -31,8 +31,8 @@ class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
         <?php
 
         query_posts(array('posts_per_page' => $number_of_posts)); ?>
-        <div id="recent-posts-section" class="f-row">
-            <div id="recent-posts" class="large-10 columns">
+        <div id="recent-posts-section" class="">
+            <div id="recent-posts" class="large-12 columns">
 
                 <?php
                     // Display the widget title
@@ -46,7 +46,7 @@ class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
                     global $post;
                     // $featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
                     $featured_image_id = get_post_thumbnail_id($post->ID);
-                    $featured_image_info = wp_get_attachment_image_src($featured_image_id, 'shop_thumbnail');
+                    $featured_image_info = wp_get_attachment_image_src($featured_image_id, 'shop_catalog');
                 ?>
                     <li class="list">
                         <?php if ( $display_thumbnails ) : ?>
@@ -70,11 +70,17 @@ class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
 
                         <center>
                             <a href="<?php the_permalink(); ?>">
-                            <h5 class="title"><?php the_title(); ?></h5></center>
+                            <h5 class="title"><?php the_title(); ?></h5>
                             </a>
-
-                        <p><?php echo excerpt(10); ?></p>
-                        <a class="read-more" href="<?php the_permalink(); ?>">Read more</a>
+                        </center>
+                        <center>
+                            <p><?php echo excerpt(10); ?></p>
+                            <p><?php
+                                $link = get_permalink();
+                                echo do_shortcode('[button link="$link"]Read more[/button]');
+                            ?></p>
+                        </center>
+                        <!-- <a class="read-more" href="<?php //the_permalink(); ?>">Read more</a> -->
 
                     </li>
                 <?php endwhile; wp_reset_query();?>
