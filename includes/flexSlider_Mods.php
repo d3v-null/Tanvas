@@ -49,7 +49,7 @@ function tanvas_load_flexslider_mod_js_footer(){
   if($newtab_slides){
     wp_enqueue_script(
       'override-flexslider-target',
-      wp_make_link_relative(get_stylesheet_directory_uri(). '/js/override-flexslider-target.js') ,
+      (get_stylesheet_directory_uri(). '/js/override-flexslider-target.js') ,
       // plugin_dir_url( __FILE__ ) . 'js/overwrite-flexslider-target.js',
       array('jquery'),
       false,
@@ -75,7 +75,8 @@ function tanvas_check_load_slider(){
   if ( ( is_page_template( 'template-biz.php' ) && isset( $woo_options['woo_slider_biz'] ) && $woo_options['woo_slider_biz'] == 'true' ) ||
      ( is_page_template( 'template-magazine.php' ) && isset( $woo_options['woo_slider_magazine'] ) && $woo_options['woo_slider_magazine'] == 'true' ) ||
        is_page_template( 'template-widgets.php' ) ||
-       is_active_sidebar( 'homepage' ) ) { $load_slider_js = true; }
+       is_active_sidebar( 'homepage' )
+    ) { $load_slider_js = true; }
 
   // Allow child themes/plugins to load the slider JavaScript when they need it.
   $load_slider_js = (bool)apply_filters( 'woo_load_slider_js', $load_slider_js );
