@@ -1055,7 +1055,7 @@ function tanvas_post_get_required_caps($_post) {
     //TODO: make this more general for posts
     $required_caps = array();
     if (property_exists($_post, 'id')) {
-        $product_id = $_post->id;
+        $product_id = $_post->get_id();
         if (class_exists('Groups_Post_Access')) {
             $required_caps = Groups_Post_Access::get_read_post_capabilities($product_id);
         }
