@@ -463,6 +463,19 @@ div#inner-wrapper nav#navigation.col-full {
 	}
 }
 
+/* woocommerce Cart Collateral width override */
+
+@media only screen and (min-width: 768px) {
+    .cart-collaterals .cart_totals, .cart-collaterals .shipping_calculator, .cart-collaterals .cross-sells {
+        width: auto !important;
+    }
+}
+
+/* WooCommerce Cart Tooltip */
+.woocommerce .cart-collaterals .wt-tooltip-box {
+    color: black !important;
+}
+
 /* Woocommerce price display style */
 ul.products a .woocommerce-loop-product__title{
 	font-size: 15pt;
