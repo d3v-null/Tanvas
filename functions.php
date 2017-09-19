@@ -24,6 +24,11 @@ function woo_options_add($options){
 						"id" => "tanvas_style_brand_color",
 						"std" => "",
 						"type" => "color");
+	$options[] = array( "name" =>  __( 'Brand Color 2', 'tanvas' ),
+						"desc" => __( 'Pick a second color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+						"id" => "tanvas_style_brand_color2",
+						"std" => "",
+						"type" => "color");
 	$options[] = array( "name" =>  __( 'Brand Hover Color', 'tanvas' ),
 						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
 						"id" => "tanvas_style_brand_hover_color",

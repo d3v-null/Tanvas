@@ -25,7 +25,7 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
                 "table.product-info th",
                 "a#doorway-link",
                 "a.phone",
-                ".main-menu-bottom ul#top-nav li a"
+                ".main-menu-bottom ul#top-nav li a:hover"
             ));
             $css_statement .= "\n { color: $brand_color !important; }\n";
             $css_statement .= implode(",\n", array(
@@ -42,6 +42,18 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
                 "ul.contact-us li.border"
             ));
             $css_statement .= "\n { border-color: $brand_color !important; }\n";
+        }
+
+        if( isset($woo_options['tanvas_style_brand_color2'])){
+            $brand_color2 = $woo_options['tanvas_style_brand_color2'];
+        } else {
+            $brand_color2 = '#ffffff';
+        }
+        if ( $brand_color2 ) {
+            $css_statement .= implode(",\n", array(
+                ".main-menu-bottom ul#top-nav li a"
+            ));
+            $css_statement .= "\n { color: $brand_color2; }\n";
         }
 
         if( isset($woo_options['tanvas_style_brand_hover_color'])){
