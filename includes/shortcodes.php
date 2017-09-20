@@ -308,4 +308,17 @@ function tanvas_product_showcase_row_shortcode($args, $content=''){
 add_shortcode('tanvas_product_showcase_table', 'tanvas_product_showcase_table_shortcode');
 add_shortcode('tanvas_product_showcase_row', 'tanvas_product_showcase_row_shortcode');
 
+/** Email signature shortcode **/
+
+function tanvas_email_signature_shortcode($args, $content=''){
+    global $woo_options;
+    $signature_html = $content;
+    if( isset($woo_options['email_signature'])){
+        $signature_html .= $woo_options['email_signature'];
+    }
+    return wp_kses($signature_html, wp_kses_allowed_html('post'));
+}
+
+add_shortcode('tanvas_email_signature', 'tanvas_email_signature_shortcode');
+
 ?>

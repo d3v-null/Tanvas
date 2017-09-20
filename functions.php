@@ -14,31 +14,35 @@ function woo_metaboxes_add($metaboxes){
 
 function woo_options_add($options){
 
-	$options[] = array( "name" => __( 'Tanvas Settings', 'tanvas'),
+	$options[] = array( "name" => __( 'Tanvas Settings'),
 						"icon" => "styling",
 						"type" => "heading");
-	$options[] = array( "name" => __( 'Brand Styling', 'tanvas'),
+	$options[] = array( "name" => __( 'Brand Styling'),
 						"type" => "subheading");
-	$options[] = array( "name" =>  __( 'Brand Color', 'tanvas' ),
-						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+	$options[] = array( "name" =>  __( 'Brand Color' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6' ),
 						"id" => "tanvas_style_brand_color",
 						"std" => "",
 						"type" => "color");
-	$options[] = array( "name" =>  __( 'Brand Color 2', 'tanvas' ),
-						"desc" => __( 'Pick a second color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+	$options[] = array( "name" =>  __( 'Brand Color 2' ),
+						"desc" => __( 'Pick a second color for site branding or add a hex color code e.g. #e6e6e6' ),
 						"id" => "tanvas_style_brand_color2",
 						"std" => "",
 						"type" => "color");
-	$options[] = array( "name" =>  __( 'Brand Hover Color', 'tanvas' ),
-						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+	$options[] = array( "name" =>  __( 'Brand Hover Color' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6' ),
 						"id" => "tanvas_style_brand_hover_color",
 						"std" => "",
 						"type" => "color");
-	$options[] = array( "name" =>  __( 'Brouhore Background', 'tanvas' ),
-						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+	$options[] = array( "name" =>  __( 'Brouhore Background' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6' ),
 						"id" => "tanvas_style_brochure_color",
 						"std" => "",
 						"type" => "color");
+    $options[] = array( "name" => __( 'Email Signature' ),
+                        "desc" => __( 'Enter the signature used in emails as html.' ),
+                        'id' => 'email_signature',
+                        'type' => 'textarea');
 	return $options;
 }
 
