@@ -4,7 +4,7 @@
  Author:       Derwent
  Author URI:   http://dev.laserphile.com
  Template:     canvas
- Version:      1.0.1
+ Version:      1.0.02
  Text Domain:  technotan
 */
 
@@ -985,4 +985,22 @@ div.message_content {
 	    clear: none;
 	    display: inline-block;
 	}
+}
+
+/** Display of items on My Account Page **/
+@media only screen and (max-width: 767px) {
+	nav.woocommerce-MyAccount-navigation:after,
+	nav.woocommerce-MyAccount-navigation:before
+	{
+	    content: ' ';
+	    display:block;
+	    clear: both;
+	}
+}
+
+.entry table.profile-table td,
+.entry table.profile-table th {
+	font-size: 15px;
+	padding-top: unset;
+	padding-bottom: unset;
 }
