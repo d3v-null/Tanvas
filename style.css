@@ -4,7 +4,7 @@
  Author:       Derwent
  Author URI:   http://dev.laserphile.com
  Template:     canvas
- Version:      1.0.0
+ Version:      1.0.1
  Text Domain:  technotan
 */
 
@@ -969,4 +969,20 @@ p.demo_store {
 /** Add extra spacing to pagagraphs */
 div.message_content {
 	padding-bottom: 10px;
+}
+
+/** make date and time fields display side by side **/
+@media only screen and (min-width: 641px) {
+	.gform_wrapper ul.gform_fields li.datetime-left {
+	    float: left;
+	    width: 50%;
+	    display: inline-block;
+	}
+
+	.gform_wrapper ul.gform_fields li.datetime-right {
+	    float: right;
+	    width: 50%;
+	    clear: none;
+	    display: inline-block;
+	}
 }
