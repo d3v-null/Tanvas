@@ -93,23 +93,40 @@ function tanvas_indefinite_article($input){
             return "an $word";
         }
     }
-    if(preg_match("/^(".$tanvas_indef_A_ordinal_a.")/i", $word))       return "a $word";
-    if(preg_match("/^(".$tanvas_indef_A_ordinal_an.")/i", $word))      return "an $word";
-    if(preg_match("/^(".$tanvas_indef_A_explicit_an.")/i", $word))         return "an $word";
-    if(preg_match("/^[aefhilmnorsx]$/i", $word))        return "an $word";
-    if(preg_match("/^[bcdgjkpqtuvwyz]$/i", $word))      return "a $word";
-    if(preg_match("/^(".$tanvas_indef_A_abbrev.")/x", $word))          return "an $word";
-    if(preg_match("/^[aefhilmnorsx][.-]/i", $word))         return "an $word";
-    if(preg_match("/^[a-z][.-]/i", $word))          return "a $word";
-    if(preg_match("/^[^aeiouy]/i", $word))                  return "a $word";
-    if(preg_match("/^e[uw]/i", $word))                      return "a $word";
-    if(preg_match("/^onc?e\b/i", $word))                    return "a $word";
-    if(preg_match("/^uni([^nmd]|mo)/i", $word))     return "a $word";
-    if(preg_match("/^ut[th]/i", $word))                     return "an $word";
-    if(preg_match("/^u[bcfhjkqrst][aeiou]/i", $word))   return "a $word";
-    if(preg_match("/^U[NK][AIEO]?/", $word))                return "a $word";
-    if(preg_match("/^[aeiou]/i", $word))            return "an $word";
-    if(preg_match("/^(".$tanvas_indef_A_y_cons.")/i", $word))  return "an $word";
+    if(preg_match("/^(".$tanvas_indef_A_ordinal_a.")/i", $word))
+        return "a $word";
+    if(preg_match("/^(".$tanvas_indef_A_ordinal_an.")/i", $word))
+        return "an $word";
+    if(preg_match("/^(".$tanvas_indef_A_explicit_an.")/i", $word))
+        return "an $word";
+    if(preg_match("/^[aefhilmnorsx]$/i", $word))
+        return "an $word";
+    if(preg_match("/^[bcdgjkpqtuvwyz]$/i", $word))
+        return "a $word";
+    if(preg_match("/^(".$tanvas_indef_A_abbrev.")/x", $word))
+        return "an $word";
+    if(preg_match("/^[aefhilmnorsx][.-]/i", $word))
+        return "an $word";
+    if(preg_match("/^[a-z][.-]/i", $word))
+        return "a $word";
+    if(preg_match("/^[^aeiouy]/i", $word))
+        return "a $word";
+    if(preg_match("/^e[uw]/i", $word))
+        return "a $word";
+    if(preg_match("/^onc?e\b/i", $word))
+        return "a $word";
+    if(preg_match("/^uni([^nmd]|mo)/i", $word))
+        return "a $word";
+    if(preg_match("/^ut[th]/i", $word))
+        return "an $word";
+    if(preg_match("/^u[bcfhjkqrst][aeiou]/i", $word))
+        return "a $word";
+    if(preg_match("/^U[NK][AIEO]?/", $word))
+        return "a $word";
+    if(preg_match("/^[aeiou]/i", $word))
+        return "an $word";
+    if(preg_match("/^(".$tanvas_indef_A_y_cons.")/i", $word))
+        return "an $word";
     return "a $word";
 }
 
@@ -1055,7 +1072,7 @@ function tanvas_post_get_required_caps($_post) {
     //TODO: make this more general for posts
     $required_caps = array();
     if (property_exists($_post, 'id')) {
-        $product_id = $_post->id;
+        $product_id = $_post->get_id();
         if (class_exists('Groups_Post_Access')) {
             $required_caps = Groups_Post_Access::get_read_post_capabilities($product_id);
         }
@@ -1156,10 +1173,18 @@ function tanvas_post_warning() {
     }
 }
 
+function tanvas_add_checkout_auth_message(){
+    if(!is_user_logged_in()){
+        wc_print_notice( __( 'New customer? <a href="/register">Click here to create an account</a>' ), 'notice' );
+    }
+}
+
 add_action('woocommerce_before_shop_loop', 'tanvas_term_messages', 10);
 
 // add_action( 'woocommerce_archive_description', 'tanvas_term_messages', 15 );
 
 add_action('woocommerce_before_single_product', 'tanvas_post_warning', 7);
+
+add_action('woocommerce_before_checkout_form', 'tanvas_add_checkout_auth_message', 9);
 
 ?>

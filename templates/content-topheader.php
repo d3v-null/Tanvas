@@ -34,7 +34,7 @@
 							$login_url = wp_login_url( tanvas_get_current_page_url() );
 							// $login_url = $account_url;
 							$help_url = get_site_url(0,"my-account/help");
-							$request_url = wp_registration_url();
+							$request_url = get_site_url(0, "register");
 							echo "<a rel='nofollow' href='$login_url'>Log In</a>";
 							echo " | <a rel='nofollow' href='$request_url'>Register</a>";
 							echo " | <a rel='nofollow' href='$help_url'>Account Help</a>";

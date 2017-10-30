@@ -14,21 +14,35 @@ function woo_metaboxes_add($metaboxes){
 
 function woo_options_add($options){
 
-	$options[] = array( "name" => __( 'Tanvas Settings', 'tanvas'),
+	$options[] = array( "name" => __( 'Tanvas Settings'),
 						"icon" => "styling",
 						"type" => "heading");
-	$options[] = array( "name" => __( 'Brand Styling', 'tanvas'),
+	$options[] = array( "name" => __( 'Brand Styling'),
 						"type" => "subheading");
-	$options[] = array( "name" =>  __( 'Brand Color', 'tanvas' ),
-						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+	$options[] = array( "name" =>  __( 'Brand Color' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6' ),
 						"id" => "tanvas_style_brand_color",
 						"std" => "",
 						"type" => "color");
-	$options[] = array( "name" =>  __( 'Brand Hover Color', 'tanvas' ),
-						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6', 'tanvas' ),
+	$options[] = array( "name" =>  __( 'Brand Color 2' ),
+						"desc" => __( 'Pick a second color for site branding or add a hex color code e.g. #e6e6e6' ),
+						"id" => "tanvas_style_brand_color2",
+						"std" => "",
+						"type" => "color");
+	$options[] = array( "name" =>  __( 'Brand Hover Color' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6' ),
 						"id" => "tanvas_style_brand_hover_color",
 						"std" => "",
 						"type" => "color");
+	$options[] = array( "name" =>  __( 'Brouhore Background' ),
+						"desc" => __( 'Pick a custom color for site branding or add a hex color code e.g. #e6e6e6' ),
+						"id" => "tanvas_style_brochure_color",
+						"std" => "",
+						"type" => "color");
+    $options[] = array( "name" => __( 'Email Signature' ),
+                        "desc" => __( 'Enter the signature used in emails as html.' ),
+                        'id' => 'email_signature',
+                        'type' => 'textarea');
 	return $options;
 }
 
@@ -64,6 +78,8 @@ include_once('includes/PNG_Reader.php');
 include_once('includes/flexSlider_Mods.php');
 include_once('includes/extras.php');
 include_once('includes/shortcodes.php');
+include_once('includes/login-customization.php');
+include_once('includes/store-customization.php');
 
 // $woo_options = get_option( 'woo_options' );
 
@@ -73,12 +89,12 @@ include_once('includes/shortcodes.php');
 
 /* pretends to be canvas then quits if woocommerce not installed */
 function theme_enqueue_styles(){
+	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style('foundation', get_stylesheet_directory_uri() . '/css/foundation.css' );
 	wp_enqueue_style('owl.carousel', get_stylesheet_directory_uri() . '/css/owl.carousel.css');
 	wp_enqueue_style('owl.theme', get_stylesheet_directory_uri() . '/css/owl.theme.css');
-	wp_enqueue_style('design-style', get_stylesheet_directory_uri() . '/design-style.css');
-
-	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style('design-style', get_stylesheet_directory_uri() . '/css/design-style.css');
+	wp_enqueue_style('recent-posts', get_stylesheet_directory_uri() . '/css/recent-posts-widget.css');
 	wp_enqueue_style('flexboxgrid', get_stylesheet_directory_uri() . '/css/flexboxgrid.css');
 
 	// wp_enqueue_style('this-style', get_stylesheet_uri() );
@@ -126,16 +142,6 @@ function Tanvas_LasercommerceCheck() {
 if(!Tanvas_WoocommerceCheck() or !Tanvas_WoocommerceCheck()) {
 	return;
 }
-
-/**
- * Log In Mods
- */
-function tanvas_login_message(){
-	echo "<p>Forgot your email? <a href='/contact-us'>Contact head office</a></p>";
-}
-
-add_action('login_form', 'tanvas_login_message');
-
 
 /**
  * Demo Store Notice Mods
@@ -275,187 +281,6 @@ add_action('widgets_init', 'tanvas_widgets_init');
 // }
 
 /**
- * Product Category / Taxonomy Display Mods
- */
-
-/** Add category image to category archive page */
-
-// add_action( 'woocommerce_archive_description', 'woocommerce_category_image', 2 );
-function woocommerce_category_image() {
-    if ( is_product_category() ){
-	    global $wp_query;
-	    $cat = $wp_query->get_queried_object();
-	    $thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
-
-	    // if( $thumbnail_id ){
-	    // 	echo wp_get_attachment_image( $thumbnail_id, 'full' );
-	    // }
-
-	    // echo "<h2>" . __("subcategories") . "</h2>";
-
-	    /*$image = wp_get_attachment_url( $thumbnail_id );
-	    if ( $image ) {
-		    echo '<img src="' . $image . '" alt="" />';
-		}*/
-	}
-}
-
-/** Add log in warning to category **/
-
-
-/** Removes sort by dropdown **/
-remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-
-
-/** allow html in category / tax descriptions */
-
-foreach ( array( 'pre_term_description' ) as $filter ) {
-    remove_filter( $filter, 'wp_filter_kses' );
-}
-
-foreach ( array( 'term_description' ) as $filter ) {
-    remove_filter( $filter, 'wp_kses_data' );
-}
-
-/* add category description after subcategory title */
-
-// add_action('woocommerce_before_subcategory', function($category){
-// 	if(is_product_category() && !woocommerce_products_will_display()){
-// 		echo "<style>body.archive.tax-product_cat ul.products { display: table; } </style>";
-// 	}
-// });
-
-// add_action('woocommerce_before_subcategory_title', function($category){
-
-// 	if(is_product_category() && !woocommerce_products_will_display()){
-// 		echo '<div class="product-category-description">';
-// 	}
-// });
-
-// add_action('woocommerce_after_subcategory_title', function($category){
-
-// 	if(is_product_category() && !woocommerce_products_will_display()){
-// 		$desc = esc_attr($category->description);
-// 		echo "<p>$desc</p>";
-// 		echo '</div> <!-- end product-category-description-->';
-// 	}
-// });
-
-// add_filter(
-// 	'loop_shop_columns',
-// 	function($cols){
-// 		if(is_product_category() && !woocommerce_products_will_display()){
-// 			return 1;
-// 		} else {
-// 			return $cols;
-// 		}
-// 	},
-// 	999,
-// 	1
-// );
-
-
-/**
- * Dynamic pricing customization
- */
-
-// function tanvas_remove_dynamic_cumulative( $default, $module_id, $cart_item, $cart_item_key){
-// 	// error_log("tanvas dynamic cumulative: ");
-// 	// error_log(" -> def: ".serialize($default));
-// 	// error_log(" -> mod: ".serialize($module_id));
-// 	// error_log(" -> car: ".serialize($cart_item));
-// 	// error_log(" -> cak: ".serialize($cart_item_key));
-// 	return $default;
-// }
-
-// add_filter('woocommerce_dynamic_pricing_is_cumulative', 'tanvas_remove_dynamic_cumulative', 10, 4);
-
-/**
- * Login Customizations
- */
-
-function my_login_logo() { ?>
-    <style type="text/css">
-        .login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/TechnoTan-Logo.png);
-            padding-bottom: 30px;
-            background-size: 240px;
-            width: 240px;
-            padding-bottom: 0px;
-        }
-    </style>
-<?php }
-add_action( 'login_enqueue_scripts', 'my_login_logo' );
-
-function my_login_stylesheet() {
-    wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/css/style-login.css' );
-}
-add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
-
-function my_login_logo_url() {
-    return home_url();
-}
-add_filter( 'login_headerurl', 'my_login_logo_url' );
-
-/**
- * change loop shop columns
- */
-// THIS IS NOT NEEDED NOW THAT WE USE PRODUCT ARCHIVE CUSTOMIZER
-// if (!function_exists('change_loop_columns')) {
-// 	function change_loop_columns() {
-// 		return 3; // 3 products per row
-// 	}
-// }
-// add_filter('loop_shop_columns', 'change_loop_columns', 999, 3);
-
-// change the css if there are 3 columns
-// function inject_column_css(){
-// 	// if(WP_DEBUG) error_log("called inject_column_css callback");
-// 	$columns = apply_filters( 'loop_shop_columns', 3);
-// 	// if(WP_DEBUG) error_log("-> columns: $columns");
-// 	if ($columns == 3 ){
-// 		<!-- <style type="text/css">
-// 		ul.products li.product {
-// 			width: 30%;
-// 		}
-// 		</style> -->
-// 	  }
-// }
-// add_action('woocommerce_before_shop_loop', 'inject_column_css', 999, 0);
-/**
- * title customizations for products in category
- */
-
-function shrink_product_title($title, $id){
-	// if(WP_DEBUG) error_log("called shrink_product_title callback | title: $title, id: $id");
-	if(is_product_category()){
-		$title_length = strlen($title);
-		$title = preg_replace("/^(.*)( &#8212; | - | &#8211; | — )(.*)$/u", '<span>$1</span><small>$3</small>', $title );
-		if ($title_length > 64){
-			$title = "<span class='long-title'>".$title."</span>";
-		}
-	}
-	// if(WP_DEBUG) error_log("-> returning $title");
-	return $title;
-}
-add_action('the_title', 'shrink_product_title', 9999, 2);
-
-
-/*
- * wc_remove_related_products
- *
- * Clear the query arguments for related products so none show.
- * Add this code to your theme functions.php file.
- */
-// function wc_remove_related_products( $args ) {
-// 	return array();
-// }
-// add_filter('woocommerce_related_products_args','wc_remove_related_products', 10);
-
-//TODO: show "available in ..." on variable product page
-//TODO: Change "Select Options" and "READ MORE" to "VIEW" when product is unavailable
-
-/**
  * Clear Attribute Select box if no available Variations
  */
 
@@ -483,12 +308,6 @@ function maybe_clear_attribute_select_box( ) {
 }
 add_action('woocommerce_before_add_to_cart_form', 'maybe_clear_attribute_select_box');
 
-function tanvas_output_login_help(){
-	$help_link = get_site_url(0,"/my-account/help");
-	echo do_shortcode( '[button link="'.$help_link.'" bg_color="#d1aa67"]account help[/button]');
-}
-
-add_action( 'woocommerce_login_form_end', 'tanvas_output_login_help');
 
 add_action( 'init', 'register_my_menu' );
 function register_my_menu() {
@@ -542,12 +361,6 @@ function excerpt($limit) {
 add_filter('deprecated_constructor_trigger_error', '__return_false');
 
 /**
- * Remove product count
- */
-
-remove_filter('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
-
-/**
  * Add timestamp to woocommerce order emails
  */
 
@@ -564,5 +377,16 @@ function remove_wc_password_meter() {
 wp_dequeue_script( 'wc-password-strength-meter' );
 }
 add_action( 'wp_print_scripts', 'remove_wc_password_meter', 100 );
+
+/* Just looking for all wp image sizes */
+
+function display_wp_image_sizes() {
+	global $_wp_additional_image_sizes;
+	print '<pre>';
+	print_r( $_wp_additional_image_sizes );
+	print '</pre>';
+}
+
+// add_action( 'the_content', 'display_wp_image_sizes');
 
 ?>

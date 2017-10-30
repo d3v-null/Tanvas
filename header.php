@@ -7,7 +7,7 @@
  * @package WooFramework
  * @subpackage Template
  */
- 
+
 $woo_options = get_option( 'woo_options' );
 global $woo_options, $wp_query;
 
@@ -35,27 +35,24 @@ global $woo_options, $wp_query;
 <section class="main-section">
 
 	<header id="header-section" class="foundation">
-				
-		<?php get_template_part('templates/content', 'topheader'); ?>
-		
-		<?php get_template_part('templates/content', 'header'); ?>
-		
-		<?php get_template_part('templates/content', 'menu'); ?>
-		
-	</header>
-	
-	
-	<div class="main-slider">
-		 <!-- #main Starts -->
-		<?php woo_main_before(); ?>
 
-		<?php if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'false' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; } ?>
+		<?php get_template_part('templates/content', 'topheader'); ?>
+
+		<?php get_template_part('templates/content', 'header'); ?>
+
+		<?php get_template_part('templates/content', 'menu'); ?>
+
+	</header>
+
+
+	<div class="main-slider">
+		<?php if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'true' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; } ?>
 	</div>
 
 <div id="wrapper-section">
 <div id="wrapper">
 	<div id="inner-wrapper">
-	
+
 		<?php //woo_header_before(); ?>
 		<!--header id="header" class="col-full">
 			<?php //woo_header_inside(); ?>

@@ -22,7 +22,7 @@
 <div class="fix"></div><!--/.fix-->
 
 	<footer id="footer-section" class="foundation">
-	
+
 		<div class="f-row">
 			<div id="about-technotan" class="large-3 columns">
 				<?php dynamic_sidebar('widget-one'); ?>
@@ -35,9 +35,9 @@
 					<li class="terms-technotan"><?php dynamic_sidebar('widget-five'); ?></li>
 				</ul>
 			</div>
-			
+
 		</div>
-		
+
 		<div id="footer-bottom" class="f-row">
 			<div id="copyright" class="medium-6 columns">
 				<?php woo_footer_left(); ?>
@@ -47,24 +47,24 @@
 			</div>
 		</div>
 	</footer>
-	
-	
+
+
 <!-- close the off-canvas menu -->
 <a class="exit-off-canvas"></a>
 
 </div>
 </div>
-	
+
 	<?php woo_footer_after(); ?>
 
 	<?php wp_footer(); ?>
 
 	<?php woo_foot(); ?>
-	
+
 	<script type="text/javascript">
 	jQuery(document).ready(function( $ ) {
 		$(document).foundation();
-		
+
 		$( "body.page table, body.single table" ).addClass( "table" );
 		$( "body.woocommerce-page table" ).removeClass( "table" );
 		$( "#off-canvas-list1 .menu-item-has-children, #off-canvas-list1 .page_item_has_children" ).addClass( "has-submenu" );
@@ -79,14 +79,14 @@
 			$(this).attr("id", "count-"+ n );
 		});
 		$("#off-canvas-list2 li#count-0").before(' <li><label>&nbsp;</label></li>');
-		
+
 		var n = $(".primary-navigation .nav-menu li:first-child").length + 1 ;
 		  $(".primary-navigation .nav-menu li:first-child").each(function(n) {
 			$(this).attr("id", "home-"+ n );
 		});
-		
+
 		$('ul.slides li .content').wrapInner('<div class="f-row" />');
-		
+
 		$("#testimonial-slider").owlCarousel({
 			autoPlay : 10000,
 			stopOnHover : true,
@@ -98,11 +98,12 @@
 			autoHeight : true,
 			transitionStyle:"fade"
 		});
-		
+
 		$(".nav-entries span.nav-prev.fl").html("Next");
 		$(".nav-entries span.nav-next.fr").html("Previous");
-		
-		$("form.woocommerce-shipping-calculator p a").after("<span class='office-hours'>pickup from jandakot<br/>office hours: 8:00AM - 5:00PM</span>");
+
+        // Remove shitty shipping hours notice
+		// $("form.woocommerce-shipping-calculator p a").after("<span class='office-hours'>pickup from jandakot<br/>office hours: 8:00AM - 5:00PM</span>");
 	});
 	</script>
 	<div id="fb-root"></div>

@@ -31,8 +31,8 @@ class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
         <?php
 
         query_posts(array('posts_per_page' => $number_of_posts)); ?>
-        <div id="recent-posts-section" class="f-row">
-            <div id="recent-posts" class="large-10 columns">
+        <div id="recent-posts-section" class="">
+            <div id="recent-posts" class="large-12 columns">
 
                 <?php
                     // Display the widget title
@@ -44,27 +44,43 @@ class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
                 <?php
                     while ( have_posts() ) : the_post();
                     global $post;
-                    $featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                    // $featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                    $featured_image_id = get_post_thumbnail_id($post->ID);
+                    $featured_image_info = wp_get_attachment_image_src($featured_image_id, 'shop_catalog');
                 ?>
                     <li class="list">
                         <?php if ( $display_thumbnails ) : ?>
                             <?php if ( has_post_thumbnail() ) {
-                                $img_width = "91";
-                                $img_height = "91";
-                                $img_class = "recent-posts-img";
-                                $img_alt = "";
+                                // $img_width = "91";
+                                // $img_height = "91";
+                                // $img_class = "recent-posts-img";
+                                // $img_alt = "";
                             ?>
-                                <center>
-                                    <?php woo_image("src=$featured_image&meta=$img_alt&width=$img_width&height=$img_height"); ?>
+                                <div class="recent-posts-container">
+                                    <a href="<?php the_permalink(); ?>">
+                                    <?php
+                                        # woo_image("src=$featured_image&meta=$img_alt&width=$img_width&height=$img_height&force=true");
+                                        echo '<img src="'. $featured_image_info[0] .'" />';
+                                    ?>
+                                    </a>
                                     <!-- <img class="recent-posts-img" src="<?php //echo esc_url( get_stylesheet_directory_uri() ) ;?>/timthumb.php?src=<?php //echo $featured_image; ?>&amp;w=91&amp;h=91" /> -->
-                                </center>
+                                </div>
                             <?php } ?>
                         <?php endif;?>
 
-                        <center><h5 class="title"><?php the_title(); ?></h5></center>
-
-                        <p><?php echo excerpt(10); ?></p>
-                        <a class="read-more" href="<?php the_permalink(); ?>">Read more</a>
+                        <center>
+                            <a href="<?php the_permalink(); ?>">
+                            <h5 class="title"><?php the_title(); ?></h5>
+                            </a>
+                        </center>
+                        <center>
+                            <p><?php echo excerpt(10); ?></p>
+                            <p><?php
+                                $link = get_permalink();
+                                echo do_shortcode('[button link="$link"]Read more[/button]');
+                            ?></p>
+                        </center>
+                        <!-- <a class="read-more" href="<?php //the_permalink(); ?>">Read more</a> -->
 
                     </li>
                 <?php endwhile; wp_reset_query();?>
