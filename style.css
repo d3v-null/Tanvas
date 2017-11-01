@@ -4,7 +4,7 @@
  Author:       Derwent
  Author URI:   http://dev.laserphile.com
  Template:     canvas
- Version:      1.0.02
+ Version:      1.0.0.3
  Text Domain:  technotan
 */
 
@@ -109,7 +109,7 @@ div.widget-area-container#doorway-button-sidebar-container{
 }
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-sidebar div.widget,
-div#tanvas-home-doorway-bottom div.widget-doorway-bottom div{
+div#tanvas-home-doorway-bottom div.widget-doorway-bottom div#recent-posts-section {
 	background: white;
 }
 
