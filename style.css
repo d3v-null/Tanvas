@@ -766,12 +766,11 @@ a.shop {
 	margin-left: auto;
 	display: block;
 	text-align: center;
-	color: #fff !important;
-	font: normal 31px/1.5em Arial, sans-serif !important;
-	/*background-color: #d1aa67;*/
-	border-radius: 5px;
-	max-width: 284px;
-	/*margin-top: 25px;*/
+    font-size: 15px !important;
+    font-weight: bolder !important;
+    font-family: Arial, sans-serif !important;
+	/* border-radius: 5px; */
+	max-width: 160px;
 	margin-top: 6px;
 	margin-right: 10px;
 	padding: 5px 20px;
@@ -780,12 +779,18 @@ a.shop {
 	-moz-transition-duration: 0.6s;
 	-webkit-transition-duration: 0.6s;
 	-o-transition-duration: 0.6s;
-	float: right;
+    float: right;
+    color: #ffffff !important;
+}
+
+a.shop:link {
+    color: #ffffff !important;
 }
 
 a.shop:hover {
 	text-decoration: none;
-	/*background-color: #A5854F;*/
+    color: #000000 !important;
+	/* background-color: #000000 !important; */
 }
 
 div#split-shop-container {

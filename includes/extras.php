@@ -64,7 +64,7 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
         }
         if ($brand_hover_color) {
             $css_statement .= implode(",\n", array(
-                "a.shop:hover",
+                // "a.shop:hover",
                 ".primary-navigation ul ul a:hover",
                 ".primary-navigation ul ul li.focus > a",
                 "body #wrapper .button:hover",
