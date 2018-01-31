@@ -494,6 +494,10 @@ ul.products a .woocommerce-loop-product__title span.long-title{
 	font-size: 13pt;
 }
 
+ul.products li.product a.button {
+	color: white !important;
+}
+
 li.product a .woocommerce-loop-product__title span{
 	display: block;
 	clear: both;
