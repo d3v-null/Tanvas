@@ -448,6 +448,15 @@ div.woocommerce.widget_product_search form#searchform input#s{
 	background: #e6e6e6 !important;
 }
 
+/* Header navigation */
+.primary-navigation .nav-menu li a {
+    color: black !important;
+}
+
+.primary-navigation .nav-menu li a:hover {
+    color: white !important;
+}
+
 /* Header Hacks */
 div#inner-wrapper nav#navigation.col-full {
 	margin:0;
