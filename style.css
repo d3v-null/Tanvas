@@ -126,7 +126,8 @@ div#doorway-button-sidebar-container {
 }
 
 /* essential grid doorway button hack */
-article#esg-grid-3-1-wrap {
+
+div.doorway-container article.myportfolio-container.minimal-light {
     z-index: 6 !important;
 }
 
