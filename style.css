@@ -125,6 +125,11 @@ div#doorway-button-sidebar-container {
     margin-bottom: 20px;
 }
 
+/* essential grid doorway button hack */
+article#esg-grid-3-1-wrap {
+    z-index: 6 !important;
+}
+
 /* custom homepage widgets */
 
 /* custom widget styles */
