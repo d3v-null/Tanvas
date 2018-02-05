@@ -121,6 +121,10 @@ div#recent-posts-section {
 	border-width: 2px;
 }
 
+div#doorway-button-sidebar-container {
+    margin-bottom: 20px;
+}
+
 /* custom homepage widgets */
 
 /* custom widget styles */
