@@ -453,7 +453,11 @@ div.woocommerce.widget_product_search form#searchform input#s{
     color: black !important;
 }
 
-.primary-navigation .nav-menu li a:hover {
+.primary-navigation .nav-menu li ul.sub-menu li a {
+    color: white !important;
+}
+
+.primary-navigation .nav-menu li.menu-item:hover a {
     color: white !important;
 }
 
