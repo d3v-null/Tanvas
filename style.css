@@ -154,8 +154,6 @@ div.doorway-container {
 
 /* custom homepage widgets */
 
-/* custom widget styles */
-
 div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget,
 aside#sidebar div.widget,
 div.widget-area#tanvas_home_right div.widget {
@@ -168,6 +166,10 @@ div.widget-area#tanvas_home_right div.widget {
 
 aside#sidebar div.widget p.buttons {
 	margin-bottom: 0px;
+}
+
+div#tanvas-home-slider-container {
+    margin-bottom: 20px;
 }
 
 /**

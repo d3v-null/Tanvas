@@ -179,6 +179,14 @@ add_filter('woo_load_slider_js', function($load_slider_js){
 
 function tanvas_widgets_init() {
 	register_sidebar( array(
+		'name' 			=> 'Home Sliders',
+		'id' 			=> 'tanvas_home_sliders',
+		'before_widget'	=> '<div class="slider-container">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h5 class="slider-title">',
+		'after_title'	=> '</h5>'
+	));
+	register_sidebar( array(
 		'name' 			=> 'Home Doorway Buttons',
 		'id' 			=> 'tanvas_home_doorway',
 		'before_widget'	=> '<div class="doorway-container">',
