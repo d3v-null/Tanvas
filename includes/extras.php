@@ -22,8 +22,9 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
                 "aside#sidebar div.widget h3",
                 "#loopedSlider.business-slider div.content div.title h2.title",
                 "#loopedSlider.business-slider div.content div.title h2.title a",
-                "table.product-info th",
+                // "table.product-info th",
                 "a#doorway-link",
+                // "a:link",
                 "a.phone",
                 ".main-menu-bottom ul#top-nav li a:hover"
             ));
@@ -36,7 +37,7 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
             ));
             $css_statement .= "\n { background-color: $brand_color !important; }\n";
             $css_statement .= implode(",\n",array(
-                "table.product-info th",
+                // "table.product-info th",
                 "span.office-hours:before",
                 "ul#recent-posts-items .list",
                 "ul.contact-us li.border"
@@ -63,7 +64,7 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
         }
         if ($brand_hover_color) {
             $css_statement .= implode(",\n", array(
-                "a.shop:hover",
+                // "a.shop:hover",
                 ".primary-navigation ul ul a:hover",
                 ".primary-navigation ul ul li.focus > a",
                 "body #wrapper .button:hover",
@@ -84,7 +85,7 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
         }
         if ($brand_brochure_color) {
             $css_statement .= implode(",\n", array(
-                "table.product-info tr"
+                // "table.product-info tr"
             ));
             $css_statement .= "\n { background-color: $brand_brochure_color !important; }\n";
         }

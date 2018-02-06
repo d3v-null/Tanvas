@@ -28,6 +28,18 @@ get_header();
  				if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'false' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; }
 			?>
 
+            <!-- slider widget area -->
+            <?php
+                $slider_active = is_active_sidebar('tanvas_home_sliders');
+                if($slider_active){
+                    echo '<div id="tanvas-home-slider-container" class="widget-area-container home foundation f-row">';
+                        echo '<div id="tanvas-home-sliders" class="widget-area">';
+                            dynamic_sidebar('tanvas_home_sliders');
+                        echo '</div> <!-- end tanvas-home-sliders -->';
+                    echo '</div> <!-- end tanvas-home-slider-container -->';
+                }
+            ?>
+
 			<!-- doorway button & sidebar widgets -->
 			<?php
 				$left_active = is_active_sidebar('tanvas_home_doorway');

@@ -99,6 +99,7 @@ function theme_enqueue_styles(){
 
 	// wp_enqueue_style('this-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'prefix-font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', array(), '4.4.0' );
+	wp_enqueue_style( 'font-awesome-5', 'https://use.fontawesome.com/releases/v5.0.6/css/all.css', array(), '5.0.6' );
 	global $is_IE;
 	if ( $is_IE ) {
 	    wp_enqueue_style( 'prefix-font-awesome-ie', '//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome-ie7.min.css', array('prefix-font-awesome'), '4.4.0' );
@@ -108,6 +109,13 @@ function theme_enqueue_styles(){
 	}
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+
+// /* enqueue font-awesome */
+// function theme_enqueue_scripts(){
+//     wp_enqueue_script( 'font-awesome-5', 'https://use.fontawesome.com/releases/v5.0.6/js/all.js', array(), '5.0.6');
+// }
+// add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
+
 
 function Tanvas_noticeWoocommerceNotInstalled() {
     echo
@@ -170,6 +178,14 @@ add_filter('woo_load_slider_js', function($load_slider_js){
 }, 999, 1);
 
 function tanvas_widgets_init() {
+	register_sidebar( array(
+		'name' 			=> 'Home Sliders',
+		'id' 			=> 'tanvas_home_sliders',
+		'before_widget'	=> '<div class="slider-container">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h5 class="slider-title">',
+		'after_title'	=> '</h5>'
+	));
 	register_sidebar( array(
 		'name' 			=> 'Home Doorway Buttons',
 		'id' 			=> 'tanvas_home_doorway',

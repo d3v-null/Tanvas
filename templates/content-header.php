@@ -1,8 +1,8 @@
 	<div class="header">
 		<div class="f-row">
-			<div class="medium-6 columns">	
+			<div class="medium-6 columns">
 				<div class="logo">
-				<?php 
+				<?php
 					$site_url = home_url( '/' );
 					$site_title = get_bloginfo( 'name' );
 					$site_description = get_bloginfo( 'description' );
@@ -11,11 +11,11 @@
 						$logo_url = $settings['logo'];
 						if ( is_ssl() ) $logo_url = str_replace( 'http://', 'https://', $logo_url );
 						echo '<a href="' . esc_url( $site_url ) . '" title="' . esc_attr( $site_description ) . '"><img src="' . esc_url( $logo_url ) . '" alt="' . esc_attr( $site_title ) . '" /></a>' . "\n";
-					} 
-				?>				
+					}
+				?>
 				</div>
 			</div>
-			<div class="medium-6 columns">	
+			<div class="medium-6 columns">
 				<ul class="contact-us">
 					<li>
 						<a href="tel://1300135941" class="phone"><i class="fa fa-phone"></i> 1300 135 941</a>
@@ -31,7 +31,7 @@
 						</ul>
 					</li-->
 				</ul>
-				<?php 
+				<?php
 					$retail_url = esc_url( home_url( '/shop/retail/' ) );
 					$trade_url = esc_url( home_url( '/shop/trade/' ) );
 					$shop_url = esc_url( home_url( '/shop/' ) );
@@ -39,8 +39,8 @@
 						<a href="<?php echo $shop_url; ?>" class="shop">TRADE STORE</a>
 					<?php } else { ?>
 						<div id="split-shop-container">
-							<a href="<?php echo $trade_url; ?>" class="shop split-shop">SHOP TRADE</a>
-							<a href="<?php echo $retail_url ; ?>" class="shop split-shop">SHOP RETAIL</a>
+							<a href="<?php echo $trade_url; ?>" class="shop split-shop"><i class="fa fa-shopping-cart"></i> TRADE</a>
+							<a href="<?php echo $retail_url ; ?>" class="shop split-shop"><i class="fa fa-shopping-cart"></i> RETAIL</a>
 						</div>
 					<?php }
 				?>
