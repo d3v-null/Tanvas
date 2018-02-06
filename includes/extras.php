@@ -24,7 +24,7 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
                 "#loopedSlider.business-slider div.content div.title h2.title a",
                 // "table.product-info th",
                 "a#doorway-link",
-                "a:link",
+                // "a:link",
                 "a.phone",
                 ".main-menu-bottom ul#top-nav li a:hover"
             ));
