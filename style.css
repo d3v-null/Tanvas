@@ -460,17 +460,31 @@ div.woocommerce.widget_product_search form#searchform input#s{
 	background: #e6e6e6 !important;
 }
 
+/* Header color */
+.main-menu-bottom {
+    background-color: whitesmoke;
+}
+
+header .header {
+    background-color: whitesmoke;
+}
+
 /* Header navigation */
+
+.main-menu-bottom ul#top-nav li a {
+    color: black !important;
+}
+
 .primary-navigation .nav-menu li a {
     color: black !important;
 }
 
 .primary-navigation .nav-menu li ul.sub-menu li a {
-    color: white !important;
+    color: black !important;
 }
 
 .primary-navigation .nav-menu li.menu-item:hover a {
-    color: white !important;
+    color: black !important;
 }
 
 /* Header Hacks */

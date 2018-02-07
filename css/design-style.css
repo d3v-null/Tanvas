@@ -359,7 +359,7 @@ a#doorway-link:hover {
 
 /*header*/
 header .header {
-	background-color: #000000;
+	/* background-color: #000000; */
 	padding-top: 30px;
 	padding-bottom: 12px;
 }
@@ -786,7 +786,7 @@ ul.social-icons a.googleplus{
 
 
 .main-menu-bottom {
-	background-color: #000000;
+	/* background-color: #000000; */
 	margin-bottom: 0 !important;  z-index: 10;
 	position: relative;
 }
