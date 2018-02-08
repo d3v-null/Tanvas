@@ -96,6 +96,7 @@ function theme_enqueue_styles(){
 	wp_enqueue_style('design-style', get_stylesheet_directory_uri() . '/css/design-style.css');
 	wp_enqueue_style('recent-posts', get_stylesheet_directory_uri() . '/css/recent-posts-widget.css');
 	wp_enqueue_style('flexboxgrid', get_stylesheet_directory_uri() . '/css/flexboxgrid.css');
+	wp_enqueue_style('tanvas_extra', get_stylesheet_directory_uri() . '/css/extra.css');
 
 	// wp_enqueue_style('this-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'prefix-font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', array(), '4.4.0' );
@@ -184,6 +185,14 @@ function tanvas_widgets_init() {
 		'before_widget'	=> '<div class="slider-container">',
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h5 class="slider-title">',
+		'after_title'	=> '</h5>'
+	));
+	register_sidebar( array(
+		'name' 			=> 'Home Products',
+		'id' 			=> 'tanvas_home_products',
+		'before_widget'	=> '<div class="product-container">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h5 class="product-title">',
 		'after_title'	=> '</h5>'
 	));
 	register_sidebar( array(

@@ -492,6 +492,11 @@ div#inner-wrapper nav#navigation.col-full {
 	margin:0;
 }
 
+/* Inter-widget distance */
+div#wrapper-section #tanvas-home-doorway-buttons .doorway-container {
+    margin-bottom: 20px;
+}
+
 /* Woocommerce Cart widget width */
 @media only screen and (min-width: 768px) {
 	#navigation ul.cart a.cart-contents + ul,

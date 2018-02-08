@@ -104,6 +104,19 @@ get_header();
 				// }
 			?>
 
+			<!-- products showcase widget area -->
+
+			<?php
+                $product_active = is_active_sidebar('tanvas_home_products');
+                if($product_active){
+                    echo '<div id="tanvas-home-product-container" class="widget-area-container home foundation f-row">';
+                        echo '<div id="tanvas-home-products" class="widget-area">';
+                            dynamic_sidebar('tanvas_home_products');
+                        echo '</div> <!-- end tanvas-home-products -->';
+                    echo '</div> <!-- end tanvas-home-product-container -->';
+                }
+            ?>
+
 			<!-- middle widget areas -->
 			<?php
 				$left_active = is_active_sidebar('tanvas_home_left');
