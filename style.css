@@ -107,6 +107,12 @@ div.header-widget div.widget a {
 	margin-top: 9px;
 }
 
+header .header {
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+
 /* Doorway buttons widget mods */
 
 /* make doorway button widgets appear without background */

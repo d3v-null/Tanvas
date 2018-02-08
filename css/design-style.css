@@ -357,13 +357,6 @@ a#doorway-link:hover {
 	display: block;
 }
 
-/*header*/
-header .header {
-	/* background-color: #000000; */
-	padding-top: 30px;
-	padding-bottom: 12px;
-}
-
 .top-header {
 	background-color: #333333;
 }
