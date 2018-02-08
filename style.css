@@ -698,6 +698,14 @@ a.woo-sc-button {
 	text-decoration: underline !important;
 }
 
+body #wrapper a.button {
+    background-color: transparent !important;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    color: black !important;
+}
+
 /**
  * product info display
  */
