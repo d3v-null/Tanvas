@@ -492,6 +492,17 @@ div#inner-wrapper nav#navigation.col-full {
 	margin:0;
 }
 
+/* TechnoTan Tagline */
+h3.tt-tagline {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Raleway";
+    clear: both;
+    font-size: 48px;
+    color: black;
+}
+
 /* Inter-widget distance */
 div#wrapper-section #tanvas-home-doorway-buttons .doorway-container {
     margin-bottom: 20px;
