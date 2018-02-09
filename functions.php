@@ -414,4 +414,8 @@ function display_wp_image_sizes() {
 
 // add_action( 'the_content', 'display_wp_image_sizes');
 
+/* Stop auto regenerating images */
+add_filter( 'woocommerce_background_image_regeneration', '__return_false' );
+
+
 ?>
