@@ -145,6 +145,10 @@ div.doorway-container article.myportfolio-container.technotan
     z-index: 6 !important;
 }
 
+div.doorway-container article.myportfolio-container.technotan {
+    z-index: 7 !important;
+}
+
 /* custom homepage widgets */
 
 /* custom widget styles */
