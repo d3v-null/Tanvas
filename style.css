@@ -139,7 +139,9 @@ div#doorway-button-sidebar-container {
 
 /* essential grid doorway button hack */
 
-div.doorway-container article.myportfolio-container.minimal-light {
+div.doorway-container article.myportfolio-container.minimal-light,
+div.doorway-container article.myportfolio-container.technotan
+{
     z-index: 6 !important;
 }
 
@@ -229,146 +231,7 @@ body.archive.tax-product_cat img.attachment-full {
 	height: auto;
 	width: auto;
 }
-/* @media only screen and (min-width: 768px) {
-	body.archive.tax-product_cat img.attachment-full {
-		width: 50%;
-		display: block;
-		float: left;
-		clear: left;
-		margin-bottom: 20px;
-	}
 
-	body.archive.tax-product_cat div.term-description {
-		width: 50%;
-		display: block;
-		float: left;
-		clear: right;
-		padding: 10px;
-	    -webkit-box-sizing: border-box;
-	    -moz-box-sizing: border-box;
-	    box-sizing: border-box;
-	}
-
-	body.archive.tax-product_cat ul.products {
-		clear:both;
-
-/**
- * Recent Posts Mods
- */
-
-/**
- * HEADER NAV ICON DISPLAY MODS
- */
-
-/* Header Social Media icons */
-div.social-icons {
-	/*float: right;*/
-	display: block;
-}
-div.social-icons img {
-	height: auto;
-	max-height: 35px;
-	max-width: 35px;
-	width: auto;
-}
-
-/* Makes nav icons show up properly */
-@media only screen and (min-width: 768px) {
-	#navigation {
-		clear: none;
-	}
-
-	#navigation .menus.nav-icons:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-
-	#navigation .menus.nav-icons .side-nav {
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
-
-	#navigation .menus.nav-icons-1 #main-nav {
-		margin-right: 4em;
-	}
-
-	#navigation .menus.nav-icons-1 .side-nav {
-		width: 4em;
-	}
-
-	#navigation .menus.nav-icons-2 #main-nav {
-		margin-right: 7em;
-	}
-
-	#navigation .menus.nav-icons-2 .side-nav {
-		width: 7em;
-	}
-
-	#navigation .menus.nav-icons-3 #main-nav {
-		margin-right: 10em;
-	}
-
-	#navigation .menus.nav-icons-3 .side-nav {
-		width: 10em;
-	}
-
-	#navigation .menus.nav-icons-4 #main-nav {
-		margin-right: 13em;
-	}
-
-	#navigation .menus.nav-icons-4 .side-nav {
-		width: 13em;
-	}
-}
-
-@media only screen and (min-width: 980px) {
-	#navigation .cart-extended ul.cart a.cart-contents {
-		display: inline-block;
-		width: auto;
-		text-indent: 0;
-		overflow: visible;
-	}
-
-	#navigation .cart-extended ul.cart a.cart-contents:before {
-		display: inline-block;
-		margin-right: .5em;
-		height: auto;
-	}
-
-	#navigation .menus.nav-icons-1.cart-extended #main-nav {
-		margin-right: 13.5em;
-	}
-
-	#navigation .menus.nav-icons-1.cart-extended .side-nav {
-		width: 13.5em;
-	}
-
-	#navigation .menus.nav-icons-2.cart-extended #main-nav {
-		margin-right: 16.5em;
-	}
-
-	#navigation .menus.nav-icons-2.cart-extended .side-nav {
-		width: 16.5em;
-	}
-
-	#navigation .menus.nav-icons-3.cart-extended #main-nav {
-		margin-right: 19.5em;
-	}
-
-	#navigation .menus.nav-icons-3.cart-extended .side-nav {
-		width: 19.5em;
-	}
-
-	#navigation .menus.nav-icons-4.cart-extended #main-nav {
-		margin-right: 22.5em;
-	}
-
-	#navigation .menus.nav-icons-4.cart-extended .side-nav {
-		width: 22.5em;
-	}
-}
 
 /* top nav menu */
 @media only screen and (min-width: 768px) {

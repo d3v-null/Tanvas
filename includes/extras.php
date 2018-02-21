@@ -89,6 +89,21 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
             $css_statement .= "\n { background-color: $brand_brochure_color !important; }\n";
         }
 
+        if( isset($woo_options['tanvas_footer_image'])){
+            $footer_image = $woo_options['tanvas_footer_image'];
+        } else {
+            $footer_image = '';
+        }
+        if($footer_image){
+            $css_statement .= "\n #footer-section { background-image: url(" . $background_image . ")}";
+        } else {
+            $css_statement .= "\n #footer-section { background-color: black; }";
+        }
+
+        // background-image: url(../img/footer-widget-bg.png);
+
+
+
         echo '<style type="text/css">'.$css_statement.'</style>';
     }
 

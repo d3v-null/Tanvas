@@ -19,7 +19,17 @@
 				<ul class="contact-us">
 					<li>
 						<!-- <a href="tel://1300135941" class="phone"><i class="fa fa-phone"></i> 1300 135 941</a> -->
-						<a href="tel://61894123000" class="phone"><i class="fa fa-phone"></i><i class="fa fa-globe"></i> (+61) 08 9412 3000</a>
+                        <?php
+                            global $woo_options;
+                            if(isset($woo_options['tanvas_header_number'])) {
+                                $header_humber = $woo_options['tanvas_header_number'];
+                                if($header_humber){
+                                    echo $header_humber;
+                                }
+                            }
+                        ?>
+
+						<!-- <a href="tel://61894123000" class="phone"><i class="fa fa-phone"></i> (+61) 08 9412 3000</a> -->
 						<!-- <a href="tel://61477764985" class="phone">SMS <i class="fa fa-mobile"></i> (+61) 04 7776 4985</a> -->
 					</li>
 					<!--li>

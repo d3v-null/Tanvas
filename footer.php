@@ -84,26 +84,6 @@
 		  $(".primary-navigation .nav-menu li:first-child").each(function(n) {
 			$(this).attr("id", "home-"+ n );
 		});
-
-		$('ul.slides li .content').wrapInner('<div class="f-row" />');
-
-		$("#testimonial-slider").owlCarousel({
-			autoPlay : 10000,
-			stopOnHover : true,
-			navigation:true,
-			pagination:false,
-			paginationSpeed : 1000,
-			goToFirstSpeed : 2000,
-			singleItem : true,
-			autoHeight : true,
-			transitionStyle:"fade"
-		});
-
-		$(".nav-entries span.nav-prev.fl").html("Next");
-		$(".nav-entries span.nav-next.fr").html("Previous");
-
-        // Remove shitty shipping hours notice
-		// $("form.woocommerce-shipping-calculator p a").after("<span class='office-hours'>pickup from jandakot<br/>office hours: 8:00AM - 5:00PM</span>");
 	});
 	</script>
 	<div id="fb-root"></div>

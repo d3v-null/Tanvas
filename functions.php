@@ -43,6 +43,16 @@ function woo_options_add($options){
                         "desc" => __( 'Enter the signature used in emails as html.' ),
                         'id' => 'email_signature',
                         'type' => 'textarea');
+    $options[] = array( "name" => __( 'Footer Image' ),
+                        "desc" => __( 'Specify the image which is used in the footer' ),
+                        'id' => 'tanvas_footer_image',
+                        'type' => 'upload',
+                        "std" => "");
+    $options[] = array( "name" => __( 'Phone Number HTML' ),
+                        "desc" => __( 'Specify the HTML used to display the phone number in the header (e.g. a href="tel://" link)' ),
+                        'id' => 'tanvas_header_number',
+                        'type' => 'textarea',
+                        "std" => '<a href="tel://61894123000" class="phone"><i class="fa fa-phone"></i> (+61) 08 9412 3000</a>');
 	return $options;
 }
 
@@ -91,8 +101,8 @@ include_once('includes/store-customization.php');
 function theme_enqueue_styles(){
 	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style('foundation', get_stylesheet_directory_uri() . '/css/foundation.css' );
-	wp_enqueue_style('owl.carousel', get_stylesheet_directory_uri() . '/css/owl.carousel.css');
-	wp_enqueue_style('owl.theme', get_stylesheet_directory_uri() . '/css/owl.theme.css');
+	// wp_enqueue_style('owl.carousel', get_stylesheet_directory_uri() . '/css/owl.carousel.css');
+	// wp_enqueue_style('owl.theme', get_stylesheet_directory_uri() . '/css/owl.theme.css');
 	wp_enqueue_style('design-style', get_stylesheet_directory_uri() . '/css/design-style.css');
 	wp_enqueue_style('recent-posts', get_stylesheet_directory_uri() . '/css/recent-posts-widget.css');
 	wp_enqueue_style('flexboxgrid', get_stylesheet_directory_uri() . '/css/flexboxgrid.css');
@@ -417,5 +427,21 @@ function display_wp_image_sizes() {
 /* Stop auto regenerating images */
 add_filter( 'woocommerce_background_image_regeneration', '__return_false' );
 
+if ( ! class_exists( 'WC_Regenerate_Images', false ) ) {
+    global $woocommerce;
+    if(isset($woocommerce)){
+        $class_path = $woocommerce->plugin_path() .'/includes/class-wc-regenerate-images.php';
+        if(file_exists($class_path)){
+            include_once $class_path;
+        }
+    }
+}
+
+if ( class_exists('WC_Regenerate_Images', false)){
+    try {
+        // WC_Regenerate_Images::$background_process->kill_process();
+    } catch (Exception $e) {
+    }
+}
 
 ?>

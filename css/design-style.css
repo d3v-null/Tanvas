@@ -811,7 +811,7 @@ ul.social-icons a.googleplus{
 .main-menu-bottom ul#top-nav {
 	display: table;
 	margin-left: auto;
-	margin-right: -15px;
+	margin-right: 0px;
 }
 
 .main-menu-bottom ul#top-nav li.parent > a:after {
@@ -876,20 +876,6 @@ aside.left-off-canvas-menu .widget {
 	line-height: 1 !important;
 }
 
-.owl-theme .owl-controls .owl-buttons div.owl-prev,
-.owl-theme .owl-controls .owl-buttons div.owl-next {
-	width: 28px;
-	height: 29px;
-}
-
-.owl-theme .owl-controls .owl-buttons div.owl-next {
-	background-image: url(../img/next.png);
-}
-
-.owl-theme .owl-controls .owl-buttons div.owl-prev {
-	background-image: url(../img/prev.png);
-}
-
 /*widget*/
 footer .f-row {
 	max-width: 1060px !important;
@@ -897,7 +883,6 @@ footer .f-row {
 }
 
 #footer-section {
-	background-image: url(../img/footer-widget-bg.png);
 	background-size: cover;
 	padding-top: 30px;
 }
