@@ -21,9 +21,6 @@ global $woo_options, $wp_query;
 		<link rel="pingback" href="<?php echo esc_url( get_bloginfo( 'pingback_url' ) ); ?>" />
 		<?php wp_head(); ?>
 		<?php woo_head(); ?>
-		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/foundation.js"></script>
-		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/foundation.offcanvas.js"></script>
-		<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/owl.carousel.min.js"></script>
 	</head>
 
 <body <?php body_class(); ?>>

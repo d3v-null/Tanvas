@@ -26,21 +26,28 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
                 "a#doorway-link",
                 // "a:link",
                 "a.phone",
-                ".main-menu-bottom ul#top-nav li a:hover"
+                // ".main-menu-bottom ul#top-nav li a:hover",
+                ".main-menu-bottom ul#top-nav li.current_page_item a",
+                ".main-menu-bottom ul#top-nav li.current-menu-item a"
             ));
+
             $css_statement .= "\n { color: $brand_color !important; }\n";
             $css_statement .= implode(",\n", array(
                 "section#footer-widgets",
                 "a.shop",
                 "span.office-hours",
                 ".main-menu",
+                "aside.left-off-canvas-menu .widget",
+
             ));
             $css_statement .= "\n { background-color: $brand_color !important; }\n";
             $css_statement .= implode(",\n",array(
                 // "table.product-info th",
                 "span.office-hours:before",
                 "ul#recent-posts-items .list",
-                "ul.contact-us li.border"
+                "ul.contact-us li.border",
+                ".main-menu-bottom ul#top-nav li.current_page_item a",
+                ".main-menu-bottom ul#top-nav li.current-menu-item a"
             ));
             $css_statement .= "\n { border-color: $brand_color !important; }\n";
         }
@@ -52,7 +59,7 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
         }
         if ( $brand_color2 ) {
             $css_statement .= implode(",\n", array(
-                ".main-menu-bottom ul#top-nav li a"
+                // ".main-menu-bottom ul#top-nav li a"
             ));
             $css_statement .= "\n { color: $brand_color2; }\n";
         }
@@ -65,8 +72,8 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
         if ($brand_hover_color) {
             $css_statement .= implode(",\n", array(
                 // "a.shop:hover",
-                ".primary-navigation ul ul a:hover",
-                ".primary-navigation ul ul li.focus > a",
+                // ".primary-navigation ul ul a:hover",
+                // ".primary-navigation ul ul li.focus > a",
                 // "body #wrapper .button:hover",
                 "body #wrapper #content #respond .form-submit input#submit:hover",
                 "input[type=submit]:hover",

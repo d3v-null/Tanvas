@@ -43,15 +43,6 @@ li.product a h3 {
 	}
 }
 
-/* improve search box text visibility */
-/* form.searchform {
-	background: #e6e6e6 !important;
-} */
-
-/* improve search box text visibility */
-/* #navigation ul.nav-search #searchform, #navigation ul.nav-search form.searchform {
-	background: #e6e6e6 !important;
-} */
 
 /* Make main box background white */
 section#main {
@@ -236,27 +227,6 @@ body.archive.tax-product_cat img.attachment-full {
 	width: auto;
 }
 
-
-/* top nav menu */
-@media only screen and (min-width: 768px) {
-	div#inner-wrapper div#top{
-		margin: 0;
-		display: block;
-		/*overflow: hidden;*/
-	}
-
-	div#inner-wrapper div#top div.col-full{
-		float: right;
-		display: block;
-	}
-
-	div#inner-wrapper div#top:after{
-		clear:both;
-		content: "";
-		display:block;
-	}
-}
-
 /**
  * Other Hacks
  */
@@ -334,11 +304,6 @@ div.woocommerce.widget_product_search form#searchform input#s{
 	position: relative;
 }
 
-/* improve search box text visibility */
-#navigation ul.nav-search #searchform, #navigation ul.nav-search form.searchform {
-	background: #e6e6e6 !important;
-}
-
 /* Header color */
 .main-menu-bottom {
     background-color: whitesmoke;
@@ -346,24 +311,6 @@ div.woocommerce.widget_product_search form#searchform input#s{
 
 header .header {
     background-color: whitesmoke;
-}
-
-/* Header navigation */
-
-.main-menu-bottom ul#top-nav li a {
-    color: black !important;
-}
-
-.primary-navigation .nav-menu li a {
-    color: black !important;
-}
-
-.primary-navigation .nav-menu li ul.sub-menu li a {
-    color: black !important;
-}
-
-.primary-navigation .nav-menu li.menu-item:hover a {
-    color: black !important;
 }
 
 /* Header Hacks */
