@@ -28,7 +28,8 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
                 "a.phone",
                 // ".main-menu-bottom ul#top-nav li a:hover",
                 ".main-menu-bottom ul#top-nav li.current_page_item a",
-                ".main-menu-bottom ul#top-nav li.current-menu-item a"
+                ".main-menu-bottom ul#top-nav li.current-menu-item a",
+                ".main-menu-bottom ul#top-nav li.current-menu-ancestor > a"
             ));
 
             $css_statement .= "\n { color: $brand_color !important; }\n";
