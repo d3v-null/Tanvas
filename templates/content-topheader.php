@@ -3,11 +3,7 @@
 
 			<div class="small-12 columns">
 				<ul class="woo-contact-us">
-					<!-- <li id="cphone">
-						<a href="tel://61477764985" class="cphone">SMS <i class="fa fa-mobile"></i> (+61) 0477 764 985</a>
-					</li> -->
 					<li class="border">
-						<!--a href="tel://1300135941" class="call">1300 135 941</a-->
 						<p class="woo-link">
 						<?php
 						$account_url = get_site_url(0,"my-account");
@@ -31,7 +27,6 @@
 
 						} else {
 							$login_url = wp_login_url( tanvas_get_current_page_url() );
-							// $login_url = $account_url;
 							$help_url = get_site_url(0,"my-account/help");
 							$request_url = get_site_url(0, "register");
 							echo "<a rel='nofollow' href='$login_url'>Log In</a>";
