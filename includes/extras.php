@@ -108,7 +108,10 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
             $css_statement .= "\n #footer-section { background-color: black; }";
         }
 
-        // background-image: url(../img/footer-widget-bg.png);
+        if( isset($woo_options['tanvas_product_background_image'])) {
+            $url = $woo_options['tanvas_product_background_image'];
+            $css_statement .= "\n.tanvas_anteposed_gold::before {background-image: url(\"$url\") !important;}";
+        }
 
 
 

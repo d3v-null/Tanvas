@@ -53,6 +53,11 @@ function woo_options_add($options){
                         'id' => 'tanvas_header_number',
                         'type' => 'textarea',
                         "std" => '<a href="tel://61894123000" class="phone"><i class="fa fa-phone"></i> (+61) 08 9412 3000</a>');
+    $options[] = array( "name" => __( 'Product Background Image' ),
+                        "desc" => __( 'Specify the Image displayed behind the products' ),
+                        'id' => 'tanvas_product_background_image',
+                        'type' => 'upload',
+                        "std" => '/wp-content/themes/tanvas/img/gold-background.jpg');
 	return $options;
 }
 

@@ -846,7 +846,7 @@ p.demo_store {
      top: 0;
      left: 0;
      right: 0;
-     background-image: url("http://technotea.com.au/wp-content/themes/tanvas/img/gold-background.jpg");
+     /* background-image: url("http://technotea.com.au/wp-content/themes/tanvas/img/gold-background.jpg"); */
      background-size: cover;
  }
 
