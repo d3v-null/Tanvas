@@ -181,6 +181,35 @@ div#tanvas-home-slider-container {
     margin-bottom: 20px;
 }
 
+.gform_login_widget .gform_wrapper {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+/* GravityForms Login Widget */
+.gform_login_widget ul#gform_fields_login li {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.gform_login_widget ul#gform_fields_login li div.ginput_container {
+	margin-top: 0px;
+}
+
+.gform_login_widget ul#gform_fields_login li ul.gfield_checkbox {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.gform_login_widget div.gform_footer {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+.widget h3 {
+    border-bottom: 0px !important;
+}
+
 /**
  * Tanvas Homepage Mods
  */
