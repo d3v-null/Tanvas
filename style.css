@@ -72,10 +72,10 @@ p.woocommerce-result-count {
  */
 
 /* make <a> font visible on widgets */
-div.widget a,
+/* div.widget a,
 div.widget h2 {
 	color: #000000;
-}
+} */
 
 
 /* make header widgets apear without background and align right */
@@ -208,6 +208,10 @@ div#tanvas-home-slider-container {
 
 .widget h3 {
     border-bottom: 0px !important;
+}
+
+.widget ul li:before {
+    content: none;
 }
 
 /**
@@ -520,6 +524,7 @@ strong.warning {
  * Woocommerce Tanvas Buttons
  */
 
+input[type=submit],
 a.woo-sc-button {
 	margin-bottom: 5px !important;
     border-radius: 0px !important;
