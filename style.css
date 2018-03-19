@@ -215,6 +215,14 @@ div#tanvas-home-slider-container {
 }
 
 /**
+ GravityForms fixes
+ */
+ span#input_3_3_8_container {
+     display: none;
+ }
+
+
+/**
  * Tanvas Homepage Mods
  */
 
@@ -335,6 +343,25 @@ div.woocommerce.widget_product_search form#searchform input#s{
 	background: inherit;
 	background-color: white;
 	position: relative;
+}
+/* Search box when under header*/
+header#header-section div.widget_search {
+	clear: both;
+    padding-bottom: 0px !important;
+    padding-top: 5px !important;
+    margin-bottom: 0px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    width: 80%;
+    float: right;
+}
+
+header#header-section div.widget_search .searchform button.submit {
+    top: unset !important;
+}
+
+header#header-section div.header {
+    padding-bottom: 0px;
 }
 
 /* Header color */

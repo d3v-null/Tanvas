@@ -54,6 +54,8 @@
 						</div>
 					<?php }
 				?>
+                <!-- Widget -->
+                <?php dynamic_sidebar('header'); ?>
 			</div>
 		</div>
 	</div>

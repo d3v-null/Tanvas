@@ -214,11 +214,13 @@
 
 .main-menu-bottom {
 	/* background-color: #000000; */
-	margin-bottom: 0 !important;  z-index: 10;
+	margin-bottom: 0 !important;
+    z-index: 9999;
 	position: relative;
 }
 .main-menu-bottom ul#top-nav li a {
 	text-transform: uppercase;
+    z-index: 9999;
 	color: black;
 	font-family: "texgyreadventor";
 	padding-bottom: 12px !important;
