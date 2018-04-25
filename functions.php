@@ -381,6 +381,15 @@ function register_my_menu() {
 
 
 /**
+ * Change WooCommerce lost password confirmation message
+ */
+
+add_filter('woocommerce_lost_password_message', 'tanvas_custom_lost_password_message', 1, 1);
+function tanvas_custom_lost_password_message($message){
+	return 'A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please check your junk folder and wait at least 10 minutes before attempting another reset. <br/>Taking too long?<br/>'. do_shortcode('[button link="/contact-us"]CONTACT US[/button]');
+}
+
+/**
  * Woocommerce cart prices notice
  */
 function tanvas_output_cart_price_notice(){
