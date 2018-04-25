@@ -51,6 +51,11 @@ if ( ! function_exists( 'get_tanvas_theme_options' ) ) {
                 ".main-menu-bottom ul#top-nav li.current-menu-item a"
             ));
             $css_statement .= "\n { border-color: $brand_color !important; }\n";
+            $css_statement .= implode(",\n",array(
+                "ul.jetpack-social-widget-list svg"
+            ));
+            $css_statement .= "\n { fill: $brand_color !important; }\n";
+
         }
 
         if( isset($woo_options['tanvas_style_brand_color2'])){
