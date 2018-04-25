@@ -90,7 +90,7 @@ include_once('widgets/custom-social-media-widget.php');
 include_once('widgets/woocommerce-my-account-widget.php');
 include_once('includes/warnings.php');
 include_once('includes/PNG_Reader.php');
-include_once('includes/flexSlider_Mods.php');
+// include_once('includes/flexSlider_Mods.php');
 include_once('includes/extras.php');
 include_once('includes/shortcodes.php');
 include_once('includes/login-customization.php');
