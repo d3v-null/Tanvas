@@ -47,6 +47,14 @@ function tanvas_get_membership_application_button() {
     return tanvas_get_button('#', 'Membership Application');
 }
 
+function tanvas_get_restart_checkout_button() {
+    return tanvas_get_button('/checkout', 'Restart checkout');
+}
+
+function tanvas_get_my_orders_button() {
+    return tanvas_get_button('/my-account/orders', 'My Orders');
+}
+
 function tanvas_highlight_warning_keyword($keyword){
     return "<span class='tanvas-warning-highlight'>$keyword</span>" ;
 }
@@ -1184,5 +1192,32 @@ add_action('woocommerce_before_shop_loop', 'tanvas_term_messages', 10);
 add_action('woocommerce_before_single_product', 'tanvas_post_warning', 7);
 
 add_action('woocommerce_before_checkout_form', 'tanvas_add_checkout_auth_message', 9);
+
+/* Checkout warnings */
+
+function tanvas_add_checkout_refresh_message() {
+    $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
+    $message_level = 'notice';
+    if(array_key_exists('eway', $available_gateways) || array_key_exists('zipmoney', $available_gateways)){
+        $message_level = 'error';
+    }
+    wc_print_notice(
+        __(
+            "When submitting an order, please do not refresh the page. " .
+            "If you aren't redirected to an order confirmation page; ".
+            "and your order does not appear in your 'My Orders' page; ".
+            "and you don't receive an order confirmation email in the next few minutes; ".
+            "then please contact us for assistance.<br/>".
+            do_shortcode(tanvas_get_help_button()) .
+            do_shortcode(tanvas_get_my_orders_button()) .
+            do_shortcode(tanvas_get_restart_checkout_button())
+        ),
+        $message_level
+    );
+}
+
+add_action('woocommerce_before_checkout_form', 'tanvas_add_checkout_refresh_message', 10);
+
+
 
 ?>
