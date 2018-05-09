@@ -523,6 +523,7 @@ function tanvas_display_unrestricted_warning($required_authorities, $user_author
     $help_button = tanvas_get_help_button();
     $display_message = false;
     $instructions = "";
+    $required_authority = "";
 
     if( !tanvas_is_user_wholesale()){
         if (TANVAS_DEBUG) error_log($_procedure . "user is not wholesale");
@@ -1204,10 +1205,11 @@ function tanvas_add_checkout_refresh_message() {
     wc_print_notice(
         __(
             "When submitting an order, please do not refresh the page. " .
-            "If you aren't redirected to an order confirmation page; ".
-            "and your order does not appear in your 'My Orders' page; ".
-            "and you don't receive an order confirmation email in the next few minutes; ".
-            "then please contact us for assistance.<br/>".
+            "If you aren't redirected to an order confirmation page ".
+            "please check first to see if the order appears in your ‘My Orders’ page ".
+            "or if you have received an order confirmation via email. ".
+            "If you have not received an order confirmation or are unsure if ".
+            "your order has gone through then please call 08 9412 3000 for assistance.<br/>".
             do_shortcode(tanvas_get_help_button()) .
             do_shortcode(tanvas_get_my_orders_button()) .
             do_shortcode(tanvas_get_restart_checkout_button())
