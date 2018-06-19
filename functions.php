@@ -395,7 +395,7 @@ function tanvas_custom_lost_password_message($message){
 function tanvas_output_cart_price_notice(){
 	echo do_shortcode(
 		'[box type="info"]'.
-			__('Dear customer our new cart has just been launched, while we have endeavored to ensure all pricing is correct we reserve the right to revise all pricing in line with our current listed prices. We thank you for your understanding.', TANVAS_DOMAIN).'<br/>'.
+			__('Dear customer, our new cart has just been launched. While we have endeavored to ensure all pricing is correct we reserve the right to revise all pricing in line with our current listed prices or charge additional prices if shipping has been calculated incorrectly. We thank you for your understanding.', TANVAS_DOMAIN).'<br/>'.
 		'[/box]'
 	);
 }
