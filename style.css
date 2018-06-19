@@ -1192,6 +1192,7 @@ Label the data
 
 .entry table.shop_table tr td.product-name {
     padding-right: 2.5em;
+    background-color: #eeeeee;
 }
 
 .entry table.shop_table tr td.product-name a {
